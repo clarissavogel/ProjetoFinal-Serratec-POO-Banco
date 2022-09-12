@@ -1,6 +1,6 @@
 package funcionario;
 
-public class Diretor extends Funcionario {
+public class Diretor extends Gerente {
 	
 	public String CARGO = "DIRETOR";
 		
@@ -8,8 +8,8 @@ public class Diretor extends Funcionario {
 			super();
 		}
 	
-		public Diretor(String cpf, String senha) {
-			super(cpf, senha);
+		public Diretor(String cpf, String senha, String idAgencia) {
+			super(cpf, senha, idAgencia);
 		}
 	
 	public void relatorioInformacoesCliente() {

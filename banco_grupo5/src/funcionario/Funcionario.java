@@ -1,9 +1,21 @@
 package funcionario;
 
-public class Funcionario {
+public abstract class Funcionario {
 	private String cpf;
 	private String senha;
 	public final String CARGO = "FUNCIONARIO";
+	
+
+	public Funcionario(String cpf, String senha) {
+		super();
+		this.cpf = cpf;
+		this.senha = senha;
+	}
+	
+	public Funcionario() {
+		super();
+	}
+	
 	
 	public String getCpf() {
 		return cpf;

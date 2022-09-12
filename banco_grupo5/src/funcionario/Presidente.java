@@ -7,7 +7,7 @@ public class Presidente extends Diretor {
     public final String CARGO = "PRESIDENTE";
 
     public Presidente(String cpf, String senha, String idAgencia){
-        super();
+        super(cpf, senha, idAgencia);
     }
 
     public void relatorioCapitalTotal(){}

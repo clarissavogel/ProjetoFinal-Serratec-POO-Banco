@@ -1,5 +1,6 @@
 package funcionario;
 
+
 import java.lang.reflect.Constructor;
 
 public class Presidente extends Diretor {

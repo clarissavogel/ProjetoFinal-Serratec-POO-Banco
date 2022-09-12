@@ -1,5 +1,16 @@
 package funcionario;
 
-public class Presidente extends Funcionario {
+import java.lang.reflect.Constructor;
+
+public class Presidente extends Diretor {
+
+    public final String CARGO = "PRESIDENTE";
+
+    public Presidente(String cpf, String senha, String idAgencia){
+        super();
+    }
+
+    public void relatorioCapitalTotal(){}
+
 
 }

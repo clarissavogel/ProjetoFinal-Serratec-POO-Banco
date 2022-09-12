@@ -6,6 +6,16 @@ public class ContaCorrente extends Conta{
 	
 	public ContaCorrente() {		
 	}
+
+	public ContaCorrente(String cpfTitular, double saldo, String idAgencia) {
+		super(cpfTitular, saldo, idAgencia);
+		
+	}
+	
+	public void relatorioTributacao(){
+		return 0;
+		
+	}
 	
 	
 }

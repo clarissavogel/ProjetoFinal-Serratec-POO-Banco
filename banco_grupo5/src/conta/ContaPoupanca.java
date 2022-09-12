@@ -7,7 +7,16 @@ public class ContaPoupanca extends Conta{
 		
 	}
 	
-	
+	public ContaPoupanca(String cpfTitular, double saldo, String idAgencia) {
+		super(cpfTitular, saldo, idAgencia);
 		
 	}
+	
+	public double relatorioRendimento() {
+		return 0;
+		
+	}
+		
+	
 }
+

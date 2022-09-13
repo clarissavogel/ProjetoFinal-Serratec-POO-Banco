@@ -8,8 +8,10 @@ public class Diretor extends Gerente {
 		super();
 	}
 
-	public Diretor(String cpf, String senha, String idAgencia) {
-		super(cpf, senha, idAgencia);
+	public Diretor(String cpf, String senha) {
+		this.setCpf(cpf);
+		this.setSenha(senha);
+
 	}
 
 	public void relatorioInformacoesCliente() {

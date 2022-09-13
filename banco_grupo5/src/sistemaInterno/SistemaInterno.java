@@ -7,7 +7,9 @@ public class SistemaInterno {
 	public static void main(String[] args) {
 
 		Menu menu = new Menu();
-		menu.menuCliente();
+//		menu.menuCliente();
+
+		menu.login();
 
 	}
 

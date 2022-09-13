@@ -2,6 +2,8 @@ package conta;
 
 public class ContaPoupanca extends Conta{
 	private final String TIPO = "CONTAPOUPANCA";
+	private final double PORCENTAGEMRENDIMENTO = 0.0165;
+	
 	
 	public ContaPoupanca() {
 		
@@ -12,11 +14,12 @@ public class ContaPoupanca extends Conta{
 		
 	}
 	
-	public double relatorioRendimento() {
-		return 0;
+	public void relatorioRendimento(double valor, int quantDias) {
+		System.out.println("Valor final será de: R$ "+ valor * (quantDias * (1 + PORCENTAGEMRENDIMENTO/100))) ;
 		
-	}
+		}
 		
+
 	
 }
 

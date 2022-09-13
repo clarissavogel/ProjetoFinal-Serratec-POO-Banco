@@ -1,10 +1,18 @@
 package sistemaInterno;
 
+import menu.Menu;
+
 public class SistemaInterno {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//Teste
+	
+
+		
+		Menu menu = new Menu();
+		menu.menuCliente();
+
+
+
 	}
 
 }

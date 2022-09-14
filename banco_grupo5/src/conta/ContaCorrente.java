@@ -2,7 +2,7 @@ package conta;
 
 public class ContaCorrente extends Conta {
 
-	private final String TIPO = "CONTACORRENTE";
+private final String TIPO = "CONTACORRENTE";
 
 	public ContaCorrente() {
 	}
@@ -22,5 +22,12 @@ public class ContaCorrente extends Conta {
 				((contadorSaque * TARIFA) + (contadorDeposito * TARIFA) + (contadorTransferencia * TRANSFERIRTARIFA)));
 
 	}
+
+	@Override
+	public String getTIPO() {
+		return TIPO;
+	}
+
+	
 
 }

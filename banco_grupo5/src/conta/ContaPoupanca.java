@@ -37,5 +37,10 @@ public class ContaPoupanca extends Conta {
 	}
 	
 	
+	@Override
+	public String getTIPO() {
+		return TIPO;
+	}
+	
 
 }

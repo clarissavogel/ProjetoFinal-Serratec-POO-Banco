@@ -55,7 +55,8 @@ public class Menu {
 
 			if (login.equals(listaCliente.get(i).getCpf()) && senha.equals(listaCliente.get(i).getSenha())) {
 				System.out.printf("Usuário logado com sucesso!");
-				//menuUsuario(lista, login)
+				MenuUsuario menuUsuario = new MenuUsuario(listaConta, listaCliente.get(i).getCpf());
+				menuUsuario.menuCliente();
 			}
 		}
 
@@ -101,29 +102,10 @@ public class Menu {
 		Gerente gerente2 = new Gerente("2", "2", "2");
 		Diretor diretor1 = new Diretor("3", "3");
 		Presidente presidente = new Presidente("4", "4");
-
-	
-		// try {
-		// 	FileInputStream file;
-		// 	file = new FileInputStream("//BDClientes.txt");
-		// 	ObjectInputStream objectIn = new ObjectInputStream(file);
-		// 	Cliente cliente1 = (Cliente) objectIn.readObject();
-		// 	listaCliente.add(cliente1);
-		// 	System.out.println("CPF lido:" + cliente1.getCpf());
-		// } catch (FileNotFoundException e) {
-		// 	// TODO Auto-generated catch block
-		// 	e.printStackTrace();
-		// }
-
-		
-		
-		// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		
-		// SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 	
 	
-
-		// Cliente cliente2 = new Cliente("6", "6");
+		Cliente cliente1 = new Cliente("5", "5");
+		Cliente cliente2 = new Cliente("6", "6");
 
 
 		
@@ -145,8 +127,8 @@ public class Menu {
 		listaFuncionario.add(diretor1);
 		listaFuncionario.add(presidente);
 
-		
-		// listaCliente.add(cliente2);
+		listaCliente.add(cliente1);
+		listaCliente.add(cliente2);
 
 	}
 }

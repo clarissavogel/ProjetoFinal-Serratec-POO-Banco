@@ -1,5 +1,13 @@
 package menu;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.ObjectInputStream;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -94,8 +102,30 @@ public class Menu {
 		Diretor diretor1 = new Diretor("3", "3");
 		Presidente presidente = new Presidente("4", "4");
 
-		Cliente cliente1 = new Cliente("5", "5");
-		Cliente cliente2 = new Cliente("6", "6");
+	
+		// try {
+		// 	FileInputStream file;
+		// 	file = new FileInputStream("//BDClientes.txt");
+		// 	ObjectInputStream objectIn = new ObjectInputStream(file);
+		// 	Cliente cliente1 = (Cliente) objectIn.readObject();
+		// 	listaCliente.add(cliente1);
+		// 	System.out.println("CPF lido:" + cliente1.getCpf());
+		// } catch (FileNotFoundException e) {
+		// 	// TODO Auto-generated catch block
+		// 	e.printStackTrace();
+		// }
+
+		
+		
+		// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		
+		// SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+	
+	
+
+		// Cliente cliente2 = new Cliente("6", "6");
+
+
 		
 		listaConta.add(contaCorrente1);
 		listaConta.add(contaPoupanca1);
@@ -115,8 +145,8 @@ public class Menu {
 		listaFuncionario.add(diretor1);
 		listaFuncionario.add(presidente);
 
-		listaCliente.add(cliente1);
-		listaCliente.add(cliente2);
+		
+		// listaCliente.add(cliente2);
 
 	}
 }

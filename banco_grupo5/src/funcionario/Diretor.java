@@ -14,6 +14,13 @@ public class Diretor extends Gerente {
 
 	}
 
+	@Override
+	public String getCARGO() {
+		return CARGO;
+	}
+
+
+
 	public void relatorioInformacoesCliente() {
 
 	}

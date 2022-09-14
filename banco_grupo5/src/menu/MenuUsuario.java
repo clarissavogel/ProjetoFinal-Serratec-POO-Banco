@@ -2,12 +2,15 @@ package menu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import cliente.Cliente;
 import conta.Conta;
 import conta.ContaCorrente;
 import conta.ContaPoupanca;
 
 public class MenuUsuario extends Menu {
 
+	public String cargoUsuario;
 	public String cpfUsuario;
 	public ContaCorrente contaCorrenteUsuario;
 	public ContaPoupanca contaPoupancaUsuario;
@@ -31,6 +34,27 @@ public class MenuUsuario extends Menu {
 		}
 
 	}
+	
+	public MenuUsuario(ArrayList<Conta> listaConta,ArrayList<Cliente> listaCliente, String cpfUsuario, String cargoUsuario) {
+		super();
+		this.listaConta = listaConta;
+		this.listaCliente = listaCliente;
+		this.cpfUsuario = cpfUsuario;
+		this.cargoUsuario = cargoUsuario;
+		for (int i = 0; i < listaConta.size(); i++) {
+			if (cpfUsuario.equals(listaConta.get(i).getCpfTitular())) {
+				if (listaConta.get(i).getTIPO().equals("CONTACORRENTE")) {
+					contaCorrenteUsuario = (ContaCorrente) listaConta.get(i);
+				} else if (listaConta.get(i).getTIPO().equals("CONTAPOUPANCA")) {
+					contaPoupancaUsuario = (ContaPoupanca) listaConta.get(i);
+				}
+
+			}
+
+		}
+
+	}
+
 
 	public void menuCliente() {
 		System.out.println("Bem-vindo a área do Cliente!");
@@ -42,17 +66,17 @@ public class MenuUsuario extends Menu {
 			opcao = in.nextInt();
 
 			switch (opcao) {
-				case 1:
+			case 1:
 
-					movimentacoesConta();
-					break;
+				movimentacoesConta();
+				break;
 
-				case 2:
-					relatorios();
-					break;
+			case 2:
+				relatoriosCliente();
+				break;
 
-				default:
-					break;
+			default:
+				break;
 			}
 
 		} while (opcao != 3);
@@ -67,58 +91,58 @@ public class MenuUsuario extends Menu {
 			double valor;
 			switch (opcao) {
 
-				case 1:
-					System.out.println("Informe um valor para o saque");
-					valor = in.nextDouble();
-					contaCorrenteUsuario.sacar(valor);
-					break;
+			case 1:
+				System.out.println("Informe um valor para o saque");
+				valor = in.nextDouble();
+				contaCorrenteUsuario.sacar(valor);
+				break;
 
-				case 2:
-					System.out.println("Informe um valor para o depósito");
-					valor = in.nextDouble();
-					contaCorrenteUsuario.depositar(valor);
-					break;
+			case 2:
+				System.out.println("Informe um valor para o depósito");
+				valor = in.nextDouble();
+				contaCorrenteUsuario.depositar(valor);
+				break;
 
-				case 3:
-					System.out.println("Informe o cpf do titular da conta destino");
-					String cpfTitular = in.next();
-					Conta destino;
+			case 3:
+				System.out.println("Informe o cpf do titular da conta destino");
+				String cpfTitular = in.next();
+				Conta destino;
 
-					for (int i = 0; i < listaConta.size(); i++) {
+				for (int i = 0; i < listaConta.size(); i++) {
 
-						if (cpfTitular.equals(listaConta.get(i).getCpfTitular())
-								&& listaConta.get(i).getTIPO().equals("CONTACORRENTE")) {
+					if (cpfTitular.equals(listaConta.get(i).getCpfTitular())
+							&& listaConta.get(i).getTIPO().equals("CONTACORRENTE")) {
 
-							destino = listaConta.get(i);
+						destino = listaConta.get(i);
 
-							System.out.println("Informe o valor da transferencia");
-							valor = in.nextDouble();
+						System.out.println("Informe o valor da transferencia");
+						valor = in.nextDouble();
 
-							contaCorrenteUsuario.transferir(destino, valor);
-							break;
-						}
+						contaCorrenteUsuario.transferir(destino, valor);
+						break;
 					}
-				default:
-					break;
+				}
+			default:
+				break;
 			}
 
 		} while (opcao != 4);
 	}
 
-	public void relatorios() {
+	public void relatoriosCliente() {
 
 		int opcao;
-do {
-	System.out.println("Escolha uma opção:\n1 - Saldo.\n2 - Relatório de Tributação da Conta Corrente."+
-		"\n3 - Relatório de Rendimento da Conta Poupança.\n4 - Voltar.");
-		opcao = in.nextInt();
-		
-		switch (opcao) {
+		do {
+			System.out.println("Escolha uma opção:\n1 - Saldo.\n2 - Relatório de Tributação da Conta Corrente."
+					+ "\n3 - Relatório de Rendimento da Conta Poupança.\n4 - Voltar.");
+			opcao = in.nextInt();
+
+			switch (opcao) {
 			case 1:
-			
+
 				System.out.println(contaCorrenteUsuario.getSaldo());
 				break;
-			
+
 			case 2:
 
 				contaCorrenteUsuario.relatorioTributacao();
@@ -131,15 +155,59 @@ do {
 				String dataPlanejada = in.next();
 				contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
 				break;
+				
 			default:
 				break;
-		}
+			}
+
+		} while (opcao != 4);
+
+	}
 	
-} while (opcao!=4);
-		
+	public void relatoriosGerente() {
 
+		int opcao;
+		do {
+			System.out.println("Escolha uma opção:\n1 - Saldo.\n2 - Relatório de Tributação da Conta Corrente."
+					+ "\n3 - Relatório de Rendimento da Conta Poupança.\n4 - Relatório de total de contas da agência. \n5 - Voltar.");
+			opcao = in.nextInt();
 
-		
+			switch (opcao) {
+			case 1:
+
+				System.out.println(contaCorrenteUsuario.getSaldo());
+				break;
+
+			case 2:
+
+				contaCorrenteUsuario.relatorioTributacao();
+				break;
+
+			case 3:
+				System.out.println("Digite o valor para a simulação de rendimento da poupança");
+				double valor = in.nextDouble();
+				System.out.println("Digite a data final para a simulação no formato dd/MM/yyyy");
+				String dataPlanejada = in.next();
+				contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
+				break;
+				
+			case 4:
+			int contadorContasAgencia=0;	
+				for (int i = 0; i < listaConta.size(); i++) {
+					if(contaCorrenteUsuario.getIdAgencia().equals(listaConta.get(i).getIdAgencia())) {
+						contadorContasAgencia ++; 
+					}
+					
+				}
+				System.out.println("A quantidade de contas nessa agência é de: "+contadorContasAgencia);
+				break;
+				
+			default:
+				break;
+			}
+
+		} while (opcao != 5);
+
 	}
 
 }

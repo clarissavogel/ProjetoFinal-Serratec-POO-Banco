@@ -17,5 +17,10 @@ public class Presidente extends Diretor {
 
 	public void relatorioCapitalTotal() {
 	}
+	
+	@Override
+	public String getCARGO() {
+		return CARGO;
+	}
 
 }

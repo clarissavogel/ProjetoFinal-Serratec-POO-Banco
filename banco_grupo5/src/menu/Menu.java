@@ -50,33 +50,46 @@ public class Menu {
 
 		System.out.println("Senha: ");
 		String senha = in.next();
-
+		int executar = 0;
+		
 		for (int i = 0; i < listaCliente.size(); i++) {
 
 			if (login.equals(listaCliente.get(i).getCpf()) && senha.equals(listaCliente.get(i).getSenha())) {
 				System.out.printf("Usuário logado com sucesso!");
 				MenuUsuario menuUsuario = new MenuUsuario(listaConta, listaCliente.get(i).getCpf());
 				menuUsuario.menuCliente();
+				executar =1;
+				break;
 			}
 		}
-
+		
 		for (int i = 0; i < listaFuncionario.size(); i++) {
 
 			if (login.equals(listaFuncionario.get(i).getCpf()) && senha.equals(listaFuncionario.get(i).getSenha())) {
+//				if(listaFuncionario.get(i).getCARGO().equals("GERENTE")) {
+//					System.out.printf("Usuário logado com sucesso!");
+//					menuUsuario.menuGerente();
+//				}else if(listaFuncionario.get(i).getCARGO().equals("DIRETOR")) {
+//					
+//				}
 				System.out.printf("Usuário logado com sucesso!");
+				 executar =1;
+				 break;
 			}
+			
 		}
-
-		System.out.println("Login ou senha inválidos.");
+		if (executar == 0) {
+			System.out.println("Login ou senha inválidos.");
+		}else {
+			System.out.println("Conta deslogada, volte sempre!");
+		}
+		
+		
 
 //verificar pessoa
 
 	}
 
-	public void menuCliente() {
-
-
-	}
 
 	public void listas() {
 		
@@ -95,8 +108,8 @@ public class Menu {
 		ContaCorrente contaCorrente5 = new ContaCorrente("5", 5000.00, "5");
 		ContaPoupanca contaPoupanca5 = new ContaPoupanca("5", 5000.00, "5");
 		
-		ContaCorrente contaCorrente6 = new ContaCorrente("6", 5000.00, "6");
-		ContaPoupanca contaPoupanca6 = new ContaPoupanca("6", 5000.00, "6");
+		ContaCorrente contaCorrente6 = new ContaCorrente("6", 5000.00, "1");
+		ContaPoupanca contaPoupanca6 = new ContaPoupanca("6", 5000.00, "1");
 		
 		Gerente gerente1 = new Gerente("1", "1", "1");
 		Gerente gerente2 = new Gerente("2", "2", "2");

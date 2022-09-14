@@ -21,5 +21,10 @@ public class Gerente extends Funcionario {
 	public void setIdAgencia(String idAgencia) {
 		this.idAgencia = idAgencia;
 	}
+	
+	@Override
+	public String getCARGO() {
+		return CARGO;
+	}
 
 }

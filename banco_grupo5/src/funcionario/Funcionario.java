@@ -31,4 +31,8 @@ public abstract class Funcionario {
 		this.senha = senha;
 	}
 
+	public String getCARGO() {
+		return CARGO;
+	}
+
 }

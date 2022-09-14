@@ -47,6 +47,7 @@ public class Menu {
 
 			if (login.equals(listaCliente.get(i).getCpf()) && senha.equals(listaCliente.get(i).getSenha())) {
 				System.out.printf("Usuário logado com sucesso!");
+				//menuUsuario(lista, login)
 			}
 		}
 

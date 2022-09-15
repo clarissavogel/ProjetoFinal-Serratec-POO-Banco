@@ -66,12 +66,9 @@ public class Menu {
 		for (int i = 0; i < listaFuncionario.size(); i++) {
 
 			if (login.equals(listaFuncionario.get(i).getCpf()) && senha.equals(listaFuncionario.get(i).getSenha())) {
-//				if(listaFuncionario.get(i).getCARGO().equals("GERENTE")) {
-//					System.out.printf("Usuário logado com sucesso!");
-//					menuUsuario.menuGerente();
-//				}else if(listaFuncionario.get(i).getCARGO().equals("DIRETOR")) {
-//					
-//				}
+				MenuUsuario menuUsuario = new MenuUsuario(listaConta, listaCliente, 
+						listaFuncionario.get(i).getCpf(), listaFuncionario.get(i).getCARGO());
+				menuUsuario.menuCliente();
 				System.out.printf("Usuário logado com sucesso!");
 				 executar =1;
 				 break;
@@ -117,10 +114,9 @@ public class Menu {
 		Presidente presidente = new Presidente("4", "4");
 	
 	
-		Cliente cliente1 = new Cliente("5", "5");
-		Cliente cliente2 = new Cliente("6", "6");
-
-
+		Cliente cliente1 = new Cliente("5", "Zuleide", "5");
+		Cliente cliente2 = new Cliente("6", "Ana", "6");
+		Cliente cliente3 = new Cliente("7", "Josivaldo", "7");
 		
 		listaConta.add(contaCorrente1);
 		listaConta.add(contaPoupanca1);
@@ -142,6 +138,7 @@ public class Menu {
 
 		listaCliente.add(cliente1);
 		listaCliente.add(cliente2);
+		listaCliente.add(cliente3);
 
 	}
 }

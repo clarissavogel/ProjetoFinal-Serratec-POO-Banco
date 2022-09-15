@@ -1,6 +1,8 @@
 package menu;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import cliente.Cliente;
@@ -73,6 +75,7 @@ public class MenuUsuario extends Menu {
 
 			case 2:
 				relatoriosCliente();
+				//relatoriosDiretor();
 				break;
 
 			default:
@@ -207,6 +210,75 @@ public class MenuUsuario extends Menu {
 			}
 
 		} while (opcao != 5);
+
+	}
+	
+	public void relatoriosDiretor() {
+
+		int opcao;
+		do {
+			System.out.println("Escolha uma opção:\n1 - Saldo.\n2 - Relatório de Tributação da Conta Corrente."
+					+ "\n3 - Relatório de Rendimento da Conta Poupança.\n4 - Relatório de total de contas da agência."
+					+ "\n5 - Relatório dos Clientes. \n6 - Voltar.");
+			opcao = in.nextInt();
+
+			switch (opcao) {
+			case 1:
+
+				System.out.println(contaCorrenteUsuario.getSaldo());
+				break;
+
+			case 2:
+
+				contaCorrenteUsuario.relatorioTributacao();
+				break;
+
+			case 3:
+				System.out.println("Digite o valor para a simulação de rendimento da poupança");
+				double valor = in.nextDouble();
+				System.out.println("Digite a data final para a simulação no formato dd/MM/yyyy");
+				String dataPlanejada = in.next();
+				contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
+				break;
+				
+			case 4:
+			int contadorContasAgencia=0;	
+				for (int i = 0; i < listaConta.size(); i++) {
+					if(contaCorrenteUsuario.getIdAgencia().equals(listaConta.get(i).getIdAgencia())) {
+						contadorContasAgencia ++; 
+					}
+					
+				}
+				System.out.println("A quantidade de contas nessa agência é de: "+contadorContasAgencia);
+				break;
+			
+			case 5:
+				if(listaCliente.size() > 0) {
+					Collections.sort(listaCliente, new Comparator<Cliente>(){
+						
+					@Override
+					public int compare(final Cliente cliente1, final Cliente cliente2){
+					return cliente1.getNome().compareTo(cliente2.getNome());
+					}
+					});
+				}
+				
+				for (int i = 0; i < listaCliente.size(); i++) {
+					System.out.println(listaCliente.get(i).toString());
+						for (int j = 0; j < listaConta.size(); j++) {
+							if(listaCliente.get(i).getCpf().equals(listaConta.get(j).getCpfTitular()) && listaConta.get(j).getTIPO().equals("CONTACORRENTE")) {
+							System.out.println("Agencia: "+listaConta.get(j).getIdAgencia()+"\n");
+						}
+					}
+				}
+				
+				break;
+				
+			default:
+				break;
+			}
+
+		} while (opcao != 6);
 
 	}
 

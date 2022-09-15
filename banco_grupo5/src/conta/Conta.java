@@ -32,7 +32,16 @@ public abstract class Conta {
 	}
 
 	// criar erro proposital.
-	public void depositar(double deposito) {
+	public void depositar(double deposito) throws Excepition {
+		try {
+			if (deposito < 0) {
+				throw new Excepition();
+			}
+		} catch (Excepition e) {
+			e.mostrarMensagem();
+
+		}
+
 		if (deposito > TARIFA) {
 			this.saldo = this.saldo + deposito - TARIFA;
 			this.contadorDeposito++;

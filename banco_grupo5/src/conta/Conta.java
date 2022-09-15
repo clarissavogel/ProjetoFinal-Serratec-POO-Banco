@@ -1,9 +1,6 @@
 package conta;
 
-import java.io.Serializable;
-import java.text.DecimalFormat;
-
-public abstract class Conta implements Serializable  {
+public abstract class Conta {
 	private String cpfTitular;
 	private double saldo;
 	private String idAgencia;
@@ -13,7 +10,6 @@ public abstract class Conta implements Serializable  {
 	public int contadorSaque = 0;
 	public int contadorDeposito = 0;
 	public int contadorTransferencia = 0;
-	private DecimalFormat df;
 
 	public Conta() {
 	}
@@ -22,28 +18,16 @@ public abstract class Conta implements Serializable  {
 		this.cpfTitular = cpfTitular;
 		this.saldo = saldo;
 		this.idAgencia = idAgencia;
-
-		this.df = new DecimalFormat();
-		df.setMaximumFractionDigits(2);
 	}
 
-
-	public String sacar(double valor) {
+	public void sacar(double valor) {
 		if (this.saldo > valor + TARIFA) {
 			double novoSaldo = this.saldo - valor - TARIFA;
 			this.saldo = novoSaldo;
 			this.contadorSaque++;
-			return "-----------------------------------------------------"
-				+  "\n Saque:"
-				+  "\nValor Retirado: R$" + df.format(valor) 
-				+  "\nSaldo Anterior: R$" +df.format((valor+this.saldo))
-				+  "\nSaldo Atual: R$" + df.format(this.saldo)
-				+  "\n-----------------------------------------------------" 
-				+  "\n";
-
 		} else {
 			System.out.println("Saque rejeitado!\nSaldo insuficiente para saque.");
-			return null;	
+			;
 		}
 	}
 

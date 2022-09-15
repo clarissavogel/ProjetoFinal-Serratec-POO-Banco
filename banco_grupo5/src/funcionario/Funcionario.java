@@ -1,17 +1,13 @@
 package funcionario;
 
-import java.io.Serializable;
-
-public abstract class Funcionario implements Serializable{
+public abstract class Funcionario {
 	private String cpf;
-	private String nome;
 	private String senha;
 	public final String CARGO = "FUNCIONARIO";
 
-	public Funcionario(String cpf,String nome, String senha) {
+	public Funcionario(String cpf, String senha) {
 		super();
 		this.cpf = cpf;
-		this.nome = nome;
 		this.senha = senha;
 	}
 
@@ -37,14 +33,6 @@ public abstract class Funcionario implements Serializable{
 
 	public String getCARGO() {
 		return CARGO;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 }

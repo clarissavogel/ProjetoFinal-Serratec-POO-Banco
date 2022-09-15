@@ -8,9 +8,8 @@ public class Diretor extends Gerente {
 		super();
 	}
 
-	public Diretor(String cpf,String nome, String senha) {
+	public Diretor(String cpf, String senha) {
 		this.setCpf(cpf);
-		this.setNome(nome);
 		this.setSenha(senha);
 
 	}
@@ -20,5 +19,15 @@ public class Diretor extends Gerente {
 		return CARGO;
 	}
 
+
+
+	public void relatorioInformacoesCliente() {
+
+	}
+
+	/*
+	 * Relatório com as informações de Nome, CPF e Agência de todos os clientes do
+	 * sistema em ordem alfabética
+	 */
 
 }

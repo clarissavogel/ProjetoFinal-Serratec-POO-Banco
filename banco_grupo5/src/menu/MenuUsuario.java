@@ -309,13 +309,18 @@ public class MenuUsuario extends Menu {
 			String numeroAgencia = null;
 			Gerente gerente;
 						
-			
+			if (cargoUsuario.equals("GERENTE")) {
 			for (int i = 0; i < listaFuncionario.size(); i++) {
 				if (cpfUsuario.equals(listaFuncionario.get(i).getCpf())) {
 					gerente = (Gerente) listaFuncionario.get(i);
 					numeroAgencia = gerente.getIdAgencia();
 					
 				}
+			}
+			
+			}else {
+				 	System.out.println("Digite o número da agência desejado: ");
+				 	numeroAgencia = in.next();
 			}
 			
 			for (int i = 0; i < listaConta.size(); i++) {

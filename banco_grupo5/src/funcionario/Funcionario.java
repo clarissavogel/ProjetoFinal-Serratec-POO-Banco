@@ -1,34 +1,26 @@
 package funcionario;
 
-public abstract class Funcionario {
-	private String cpf;
-	private String senha;
+import java.io.Serializable;
+
+import pessoa.Pessoa;
+
+public abstract class Funcionario extends Pessoa implements Serializable {
 	public final String CARGO = "FUNCIONARIO";
 
-	public Funcionario(String cpf, String senha) {
-		super();
-		this.cpf = cpf;
-		this.senha = senha;
+	public Funcionario(String cpf, String nome, String senha) {
+		super(cpf, nome, senha);
+		
 	}
 
 	public Funcionario() {
 		super();
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
+	@Override
+	public String toString() {
+		return "Funcionario [CARGO=" + CARGO + ", getCpf()=" + getCpf() + ", getNome()=" + getNome() + ", getSenha()="
+				+ getSenha() + "]";
 	}
 
 	public String getCARGO() {

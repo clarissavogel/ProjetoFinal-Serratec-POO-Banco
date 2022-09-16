@@ -9,8 +9,8 @@ public class Gerente extends Funcionario {
 
 	}
 
-	public Gerente(String cpf, String senha, String idAgencia) {
-		super(cpf, senha);
+	public Gerente(String cpf, String nome, String senha, String idAgencia) {
+		super(cpf, nome, senha);
 		this.idAgencia = idAgencia;
 	}
 

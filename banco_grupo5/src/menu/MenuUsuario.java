@@ -9,6 +9,7 @@ import cliente.Cliente;
 import conta.Conta;
 import conta.ContaCorrente;
 import conta.ContaPoupanca;
+import pessoa.Pessoa;
 
 public class MenuUsuario extends Menu {
 
@@ -264,20 +265,25 @@ public class MenuUsuario extends Menu {
 				break;
 
 			case 5:
+					ArrayList<Pessoa> listaPessoa = new ArrayList <>();
+					listaPessoa.addAll(listaCliente);
+					listaPessoa.addAll(listaFuncionario);
+					
 				if (listaCliente.size() > 0) {
-					Collections.sort(listaCliente, new Comparator<Cliente>() {
+				
+					Collections.sort(listaPessoa, new Comparator<Pessoa>() {
 
 						@Override
-						public int compare(final Cliente cliente1, final Cliente cliente2) {
-							return cliente1.getNome().compareTo(cliente2.getNome());
+						public int compare(final Pessoa pessoa1, final Pessoa pessoa2) {
+							return pessoa1.getNome().compareTo(pessoa2.getNome());
 						}
 					});
 				}
 
-				for (int i = 0; i < listaCliente.size(); i++) {
-					System.out.println(listaCliente.get(i).toString());
+				for (int i = 0; i < listaPessoa.size(); i++) {
+					System.out.println(listaPessoa.get(i).toString());
 					for (int j = 0; j < listaConta.size(); j++) {
-						if (listaCliente.get(i).getCpf().equals(listaConta.get(j).getCpfTitular())
+						if (listaPessoa.get(i).getCpf().equals(listaConta.get(j).getCpfTitular())
 								&& listaConta.get(j).getTIPO().equals("CONTACORRENTE")) {
 							System.out.println("Agencia: " + listaConta.get(j).getIdAgencia() + "\n");
 						}

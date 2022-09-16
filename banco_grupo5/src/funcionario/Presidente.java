@@ -10,9 +10,10 @@ public class Presidente extends Diretor {
 		super();
 	}
 
-	public Presidente(String cpf, String senha) {
-		super(cpf, senha);
-		
+	public Presidente(String cpf, String nome, String senha) {
+		this.setCpf(cpf);
+		this.setNome(nome);
+		this.setSenha(senha);
 	}
 
 	public void relatorioCapitalTotal() {

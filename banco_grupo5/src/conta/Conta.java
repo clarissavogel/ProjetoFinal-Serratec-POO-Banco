@@ -1,6 +1,8 @@
 package conta;
 
-public abstract class Conta {
+import java.io.Serializable;
+
+public abstract class Conta implements Serializable  {
 	private String cpfTitular;
 	private double saldo;
 	private String idAgencia;

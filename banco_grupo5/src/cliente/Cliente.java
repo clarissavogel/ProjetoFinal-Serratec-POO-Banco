@@ -1,37 +1,22 @@
 package cliente;
 
-public class Cliente {
-	private String cpf;
-	private String nome;
-	private String senha;
+import java.io.Serializable;
+
+import pessoa.Pessoa;
+
+public class Cliente extends Pessoa implements Serializable {
 	
 	public Cliente(String cpf, String nome, String senha) {
-		this.cpf = cpf;
-		this.nome = nome;
-		this.senha = senha;
+		super(cpf, nome, senha);
 	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getCpf() {
-		return this.cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "Cliente: " + nome + "\nCPF: " + cpf ;
+		return "Cliente [getCpf()=" + getCpf() + ", getNome()=" + getNome() + ", getSenha()=" + getSenha()
+				+ "]";
 	}
+
+	
+
 	
 }

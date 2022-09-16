@@ -288,22 +288,6 @@ public class MenuUsuario extends Menu {
 		} while (opcao != 7);
 
 	}
-<<<<<<< HEAD
-		public void poupancaEntrada() {
-			System.out.println("Digite o valor para a simulação de rendimento da poupança");
-			double valor = in.nextDouble();
-			System.out.println("Digite a data final para a simulação no formato dd/MM/yyyy");
-			String dataPlanejada = in.next();
-			contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
-		}
-		
-		public void relatorioNumContas() {
-			int contadorContasAgencia = 0;
-			String numeroAgencia = null;
-			Gerente gerente;
-						
-			if (cargoUsuario.equals("GERENTE")) {
-=======
 
 	public void poupancaEntrada() {
 		System.out.println("Digite o valor para a simulação de rendimento da poupança");
@@ -319,7 +303,6 @@ public class MenuUsuario extends Menu {
 		Gerente gerente;
 
 		if (cargoUsuario.equals("GERENTE")) {
->>>>>>> fernando
 			for (int i = 0; i < listaFuncionario.size(); i++) {
 				if (cpfUsuario.equals(listaFuncionario.get(i).getCpf())) {
 					gerente = (Gerente) listaFuncionario.get(i);
@@ -327,17 +310,6 @@ public class MenuUsuario extends Menu {
 
 				}
 			}
-<<<<<<< HEAD
-			
-			}else {
-				 	System.out.println("Digite o número da agência desejado: ");
-				 	numeroAgencia = in.next();
-			}
-			
-			for (int i = 0; i < listaConta.size(); i++) {
-				if (numeroAgencia.equals(listaConta.get(i).getIdAgencia()) && listaConta.get(i).getTIPO().equals("CONTACORRENTE")) {
-				
-=======
 
 		} else {
 			System.out.println("Digite o número da agência desejado: ");
@@ -348,7 +320,6 @@ public class MenuUsuario extends Menu {
 			if (numeroAgencia.equals(listaConta.get(i).getIdAgencia())
 					&& listaConta.get(i).getTIPO().equals("CONTACORRENTE")) {
 
->>>>>>> fernando
 				contadorContasAgencia++;
 			}
 

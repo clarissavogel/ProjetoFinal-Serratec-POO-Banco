@@ -10,6 +10,7 @@ import conta.Conta;
 import conta.ContaCorrente;
 import conta.ContaPoupanca;
 import funcionario.Funcionario;
+import funcionario.Gerente;
 import pessoa.Pessoa;
 
 public class MenuUsuario extends Menu {
@@ -167,11 +168,7 @@ public class MenuUsuario extends Menu {
 				break;
 
 			case 3:
-				System.out.println("Digite o valor para a simulação de rendimento da poupança");
-				double valor = in.nextDouble();
-				System.out.println("Digite a data final para a simulação no formato dd/MM/yyyy");
-				String dataPlanejada = in.next();
-				contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
+				poupancaEntrada();
 				break;
 
 			default:
@@ -202,22 +199,11 @@ public class MenuUsuario extends Menu {
 				break;
 
 			case 3:
-				System.out.println("Digite o valor para a simulação de rendimento da poupança");
-				double valor = in.nextDouble();
-				System.out.println("Digite a data final para a simulação no formato dd/MM/yyyy");
-				String dataPlanejada = in.next();
-				contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
+				poupancaEntrada();
 				break;
 
 			case 4:
-				int contadorContasAgencia = 0;
-				for (int i = 0; i < listaConta.size(); i++) {
-					if (contaCorrenteUsuario.getIdAgencia().equals(listaConta.get(i).getIdAgencia())) {
-						contadorContasAgencia++;
-					}
-
-				}
-				System.out.println("A quantidade de contas nessa agência é de: " + contadorContasAgencia);
+				relatorioNumContas();
 				break;
 
 			default:
@@ -239,68 +225,23 @@ public class MenuUsuario extends Menu {
 
 			switch (opcao) {
 			case 1:
-
 				System.out.println(contaCorrenteUsuario.getSaldo());
 				break;
 
 			case 2:
-
 				contaCorrenteUsuario.relatorioTributacao();
 				break;
 
 			case 3:
-				System.out.println("Digite o valor para a simulação de rendimento da poupança");
-				double valor = in.nextDouble();
-				System.out.println("Digite a data final para a simulação no formato dd/MM/yyyy");
-				String dataPlanejada = in.next();
-				contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
+				poupancaEntrada();
 				break;
 
 			case 4:
-				int contadorContasAgencia = 0;
-				for (int i = 0; i < listaConta.size(); i++) {
-					if (contaCorrenteUsuario.getIdAgencia().equals(listaConta.get(i).getIdAgencia())) {
-						contadorContasAgencia++;
-					}
-
-				}
-				System.out.println("A quantidade de contas nessa agência é de: " + contadorContasAgencia);
+				relatorioNumContas();
 				break;
 
 			case 5:
-				ArrayList<Pessoa> listaPessoa = new ArrayList <>();
-				for (int i = 0; i < listaCliente.size(); i++) {
-					listaPessoa.add(listaCliente.get(i));
-					
-				}	
-				for (int i = 0; i < listaFuncionario.size(); i++) {
-					// System.out.println(listaFuncionario.get(i).getNome());
-					listaPessoa.add(listaFuncionario.get(i));
-					
-				}	
-				
-				
-				if (listaPessoa.size() > 0) {
-				
-					Collections.sort(listaPessoa, new Comparator<Pessoa>() {
-
-						@Override
-						public int compare(final Pessoa pessoa1, final Pessoa pessoa2) {
-							return pessoa1.getNome().compareTo(pessoa2.getNome());
-						}
-					});
-				}
-
-				for (int i = 0; i < listaPessoa.size(); i++) {
-					System.out.println(listaPessoa.get(i).toString());
-					for (int j = 0; j < listaConta.size(); j++) {
-						if (listaPessoa.get(i).getCpf().equals(listaConta.get(j).getCpfTitular())
-								&& listaConta.get(j).getTIPO().equals("CONTACORRENTE")) {
-							System.out.println("Agencia: " + listaConta.get(j).getIdAgencia() + "\n");
-						}
-					}
-				}
-
+				relatorioInfoClientes();
 				break;
 
 			default:
@@ -324,62 +265,27 @@ public class MenuUsuario extends Menu {
 
 			switch (opcao) {
 			case 1:
-
 				System.out.println(contaCorrenteUsuario.getSaldo());
 				break;
 
 			case 2:
-
 				contaCorrenteUsuario.relatorioTributacao();
 				break;
 
 			case 3:
-				System.out.println("Digite o valor para a simulação de rendimento da poupança");
-				double valor = in.nextDouble();
-				System.out.println("Digite a data final para a simulação no formato dd/MM/yyyy");
-				String dataPlanejada = in.next();
-				contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
+				poupancaEntrada();
 				break;
 
 			case 4:
-				int contadorContasAgencia = 0;
-				for (int i = 0; i < listaConta.size(); i++) {
-					if (contaCorrenteUsuario.getIdAgencia().equals(listaConta.get(i).getIdAgencia())) {
-						contadorContasAgencia++;
-					}
-
-				}
-				System.out.println("A quantidade de contas nessa agência é de: " + contadorContasAgencia);
+				relatorioNumContas();
 				break;
 
 			case 5:
-				if (listaCliente.size() > 0) {
-					Collections.sort(listaCliente, new Comparator<Cliente>() {
-
-						@Override
-						public int compare(final Cliente cliente1, final Cliente cliente2) {
-							return cliente1.getNome().compareTo(cliente2.getNome());
-						}
-					});
-				}
-
-				for (int i = 0; i < listaCliente.size(); i++) {
-					System.out.println(listaCliente.get(i).toString());
-					for (int j = 0; j < listaConta.size(); j++) {
-						if (listaCliente.get(i).getCpf().equals(listaConta.get(j).getCpfTitular())
-								&& listaConta.get(j).getTIPO().equals("CONTACORRENTE")) {
-							System.out.println("Agencia: " + listaConta.get(j).getIdAgencia() + "\n");
-						}
-					}
-				}
-
+				relatorioInfoClientes();	
 				break;
+			
 			case 6:
-				double total = 0;
-				for (int i = 0; i < listaConta.size(); i++) {
-					total += listaConta.get(i).getSaldo();			
-				}
-				System.out.printf("Valor total do capital armazenado no banco: R$ %.2f\n",total);
+				relatorioCapitalTotal();
 				break;
 
 			default:
@@ -390,5 +296,81 @@ public class MenuUsuario extends Menu {
 
 
 	}
+		public void poupancaEntrada() {
+			System.out.println("Digite o valor para a simulação de rendimento da poupança");
+			double valor = in.nextDouble();
+			System.out.println("Digite a data final para a simulação no formato dd/MM/yyyy");
+			String dataPlanejada = in.next();
+			contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
+		}
+		
+		public void relatorioNumContas() {
+			int contadorContasAgencia = 0;
+			String numeroAgencia = null;
+			Gerente gerente;
+						
+			
+			for (int i = 0; i < listaFuncionario.size(); i++) {
+				if (cpfUsuario.equals(listaFuncionario.get(i).getCpf())) {
+					gerente = (Gerente) listaFuncionario.get(i);
+					numeroAgencia = gerente.getIdAgencia();
+					
+				}
+			}
+			
+			for (int i = 0; i < listaConta.size(); i++) {
+				if (numeroAgencia.equals(listaConta.get(i).getIdAgencia()) && listaConta.get(i).getTIPO().equals("CONTACORRENTE")) {
+				
+				contadorContasAgencia++;
+			}
 
+		}
+			
+			System.out.println("A quantidade de contas nessa agência é de: " + contadorContasAgencia);
+			
+		}
+		
+		public void relatorioInfoClientes() {
+			ArrayList<Pessoa> listaPessoa = new ArrayList <>();
+			for (int i = 0; i < listaCliente.size(); i++) {
+				listaPessoa.add(listaCliente.get(i));
+				
+			}	
+			for (int i = 0; i < listaFuncionario.size(); i++) {
+				// System.out.println(listaFuncionario.get(i).getNome());
+				listaPessoa.add(listaFuncionario.get(i));
+				
+			}	
+			
+			
+			if (listaPessoa.size() > 0) {
+			
+				Collections.sort(listaPessoa, new Comparator<Pessoa>() {
+
+					@Override
+					public int compare(final Pessoa pessoa1, final Pessoa pessoa2) {
+						return pessoa1.getNome().compareTo(pessoa2.getNome());
+					}
+				});
+			}
+
+			for (int i = 0; i < listaPessoa.size(); i++) {
+				System.out.println(listaPessoa.get(i).toString());
+				for (int j = 0; j < listaConta.size(); j++) {
+					if (listaPessoa.get(i).getCpf().equals(listaConta.get(j).getCpfTitular())
+							&& listaConta.get(j).getTIPO().equals("CONTACORRENTE")) {
+						System.out.println("Agencia: " + listaConta.get(j).getIdAgencia() + "\n");
+					}
+				}
+			}
+		}
+		
+		public void relatorioCapitalTotal() {
+			double total = 0;
+			for (int i = 0; i < listaConta.size(); i++) {
+				total += listaConta.get(i).getSaldo();			
+			}
+			System.out.printf("Valor total do capital armazenado no banco: R$ %.2f\n",total);
+		}
+			
 }

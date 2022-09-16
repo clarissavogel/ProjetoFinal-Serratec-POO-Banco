@@ -166,13 +166,13 @@ do{
         //  comprovante.escreverObjetos(listaFuncionario, "\\banco_grupo5\\src\\menu\\BDFuncionarios.txt");
 		// 	comprovante.escreverObjetos(listaCliente, "\\banco_grupo5\\src\\menu\\BDClientes.txt");
 
-        listaConta = (ArrayList<Conta>) comprovante.lerObjetos("\\banco_grupo5\\src\\menu\\BDContas.txt");
-        listaFuncionario = (ArrayList<Funcionario>) comprovante.lerObjetos("\\banco_grupo5\\src\\menu\\BDFuncionarios.txt");
-        listaCliente = (ArrayList<Cliente>) comprovante.lerObjetos( "\\banco_grupo5\\src\\menu\\BDClientes.txt");
+        listaConta = (ArrayList<Conta>) comprovante.lerObjetos("\\src\\menu\\BDContas.txt");
+        listaFuncionario = (ArrayList<Funcionario>) comprovante.lerObjetos("\\src\\menu\\BDFuncionarios.txt");
+        listaCliente = (ArrayList<Cliente>) comprovante.lerObjetos("\\src\\menu\\BDClientes.txt");
 
-        listaConta = (ArrayList<Conta>) comprovante.lerObjetos("\\banco_grupo5\\src\\menu\\BDContas.txt");
-        listaFuncionario = (ArrayList<Funcionario>) comprovante.lerObjetos("\\banco_grupo5\\src\\menu\\BDFuncionarios.txt");
-        listaCliente = (ArrayList<Cliente>) comprovante.lerObjetos( "\\banco_grupo5\\src\\menu\\BDClientes.txt");
+        listaConta = (ArrayList<Conta>) comprovante.lerObjetos("\\src\\menu\\BDContas.txt");
+        listaFuncionario = (ArrayList<Funcionario>) comprovante.lerObjetos("\\src\\menu\\BDFuncionarios.txt");
+        listaCliente = (ArrayList<Cliente>) comprovante.lerObjetos("\\src\\menu\\BDClientes.txt");
 
     }
 }

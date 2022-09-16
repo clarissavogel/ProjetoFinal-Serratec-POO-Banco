@@ -252,45 +252,11 @@ public class MenuUsuario extends Menu {
 					contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
 					break;
 
-<<<<<<< Updated upstream
 				case 4:
 					int contadorContasAgencia = 0;
 					for (int i = 0; i < listaConta.size(); i++) {
 						if (contaCorrenteUsuario.getIdAgencia().equals(listaConta.get(i).getIdAgencia())) {
 							contadorContasAgencia++;
-=======
-			case 4:
-				int contadorContasAgencia = 0;
-				for (int i = 0; i < listaConta.size(); i++) {
-					if (contaCorrenteUsuario.getIdAgencia().equals(listaConta.get(i).getIdAgencia())) {
-						contadorContasAgencia++;
-					}
-
-				}
-				System.out.println("A quantidade de contas nessa agência é de: " + contadorContasAgencia);
-				break;
-
-			case 5:
-				ArrayList<Pessoa> listaPessoa = new ArrayList <>();
-				for (int i = 0; i < listaCliente.size(); i++) {
-					listaPessoa.add(listaCliente.get(i));
-					
-				}	
-				for (int i = 0; i < listaFuncionario.size(); i++) {
-					// System.out.println(listaFuncionario.get(i).getNome());
-					listaPessoa.add(listaFuncionario.get(i));
-					
-				}	
-				
-				
-				if (listaPessoa.size() > 0) {
-				
-					Collections.sort(listaPessoa, new Comparator<Pessoa>() {
-
-						@Override
-						public int compare(final Pessoa pessoa1, final Pessoa pessoa2) {
-							return pessoa1.getNome().compareTo(pessoa2.getNome());
->>>>>>> Stashed changes
 						}
 
 					}

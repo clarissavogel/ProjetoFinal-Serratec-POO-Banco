@@ -63,7 +63,7 @@ public class MenuUsuario extends Menu {
 		    }
 
 	public void menuCliente() {
-		System.out.println("Bem-vindo a área do Cliente!");
+	
 
 		int opcao;
 

@@ -1,7 +1,11 @@
 package menu;
 
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 import cliente.Cliente;
 import conta.Conta;
@@ -17,6 +21,8 @@ public class Menu {
 	public ArrayList<Funcionario> listaFuncionario;
 	public ArrayList<Cliente> listaCliente;
 	public ArrayList<Conta> listaConta;
+    // public String comprovanteNome;
+    public String comprovanteLog;
    
 
 	public Menu() {
@@ -30,25 +36,29 @@ public class Menu {
 	public void login() {
 
 		Scanner in = new Scanner(System.in);
-
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss");  
+        Date date = new Date();  
+        int executar = 0;
 		listas();
 
 //		for (int i = 0; i < listaCliente.size(); i++) {
 //			System.out.println(listaCliente.get(i).getCpf());
 //			System.out.println(listaCliente.get(i).getSenha());
 //		}
-
+do{
 		System.out.println("Login: ");
 		String login = in.next();
 
 		System.out.println("Senha: ");
 		String senha = in.next();
-		int executar = 0;
+		
 		
 		for (int i = 0; i < listaCliente.size(); i++) {
 
 			if (login.equals(listaCliente.get(i).getCpf()) && senha.equals(listaCliente.get(i).getSenha())) {
-				System.out.printf("Usuário logado com sucesso!");
+				System.out.println("Usuário logado com sucesso!");
+                System.out.println("Bem-vindo(a), " + listaCliente.get(i).getNome()+ "!");
+                String comprovanteNome = (listaCliente.get(i).getCpf()+listaCliente.get(i).getNome()+"CLIENTE_"+formatter.format(date)+"_Log") ;
 				MenuUsuario menuUsuario = new MenuUsuario(listaConta, listaCliente.get(i).getCpf());
 				menuUsuario.menuCliente();
 				executar =1;
@@ -59,10 +69,15 @@ public class Menu {
 		for (int i = 0; i < listaFuncionario.size(); i++) {
 
 			if (login.equals(listaFuncionario.get(i).getCpf()) && senha.equals(listaFuncionario.get(i).getSenha())) {
+                System.out.println("Usuário logado com sucesso!");
+                System.out.println("Bem-vindo(a), " + listaFuncionario.get(i).getNome()+ "!");
+                
+                String comprovanteNome = (listaFuncionario.get(i).getCpf()+listaFuncionario.get(i).getNome()+listaFuncionario.get(i).getCARGO()+"_"+formatter.format(date)+"_Log") ;
+
 				MenuUsuario menuUsuario = new MenuUsuario(listaConta, listaCliente, listaFuncionario,
                         listaFuncionario.get(i).getCpf(), listaFuncionario.get(i).getCARGO());
 				menuUsuario.menuCliente();
-				System.out.printf("Usuário logado com sucesso!");
+
 				 executar =1;
 				 break;
 			}
@@ -73,11 +88,13 @@ public class Menu {
 		}else {
 			System.out.println("Conta deslogada, volte sempre!");
 		}
+    }while(executar == 0);
+}
 		
 
 //verificar pessoa
 
-	}
+	
 
 
 	public void listas() {

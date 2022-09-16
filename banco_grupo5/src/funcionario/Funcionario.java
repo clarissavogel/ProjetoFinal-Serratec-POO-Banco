@@ -9,13 +9,12 @@ public abstract class Funcionario extends Pessoa implements Serializable {
 
 	public Funcionario(String cpf, String nome, String senha) {
 		super(cpf, nome, senha);
-		
+
 	}
 
 	public Funcionario() {
 		super();
 	}
-
 
 	@Override
 	public String toString() {

@@ -5,18 +5,14 @@ import java.io.Serializable;
 import pessoa.Pessoa;
 
 public class Cliente extends Pessoa implements Serializable {
-	
+
 	public Cliente(String cpf, String nome, String senha) {
 		super(cpf, nome, senha);
 	}
 
 	@Override
 	public String toString() {
-		return "Cliente [getCpf()=" + getCpf() + ", getNome()=" + getNome() + ", getSenha()=" + getSenha()
-				+ "]";
+		return "Dados do Cliente:\n\tNome do Cliente:" + getNome() + "\tCPF: " + getCpf();
 	}
 
-	
-
-	
 }

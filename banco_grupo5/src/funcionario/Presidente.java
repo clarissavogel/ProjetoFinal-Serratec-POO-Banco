@@ -18,13 +18,10 @@ public class Presidente extends Diretor {
 
 	public void relatorioCapitalTotal() {
 	}
-	
-	
-	
+
 	@Override
 	public String toString() {
-		return "Presidente [CARGO=" + CARGO + ", getIdAgencia()=" + getIdAgencia() + ", getCpf()=" + getCpf()
-				+ ", getNome()=" + getNome() + "]";
+		return "Dados do Presidente: \n\tNome:" + getNome() + "\tCPF: " + getCpf();
 	}
 
 	@Override

@@ -9,8 +9,8 @@ public class Gerente extends Funcionario {
 
 	}
 
-	public Gerente(String cpf,String nome, String senha, String idAgencia) {
-		super(cpf, nome , senha);
+	public Gerente(String cpf, String nome, String senha, String idAgencia) {
+		super(cpf, nome, senha);
 		this.idAgencia = idAgencia;
 	}
 
@@ -27,4 +27,12 @@ public class Gerente extends Funcionario {
 		return CARGO;
 	}
 
+	@Override
+	public String toString() {
+		return "Gerente [idAgencia=" + idAgencia + ", CARGO=" + CARGO + ", getCpf()=" + getCpf() + ", getNome()="
+				+ getNome() + "]";
+	}
+
+	
+	
 }

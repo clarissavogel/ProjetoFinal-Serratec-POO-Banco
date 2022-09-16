@@ -1,15 +1,7 @@
 package menu;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.ObjectInputStream;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 import cliente.Cliente;
 import conta.Conta;
@@ -67,8 +59,8 @@ public class Menu {
 		for (int i = 0; i < listaFuncionario.size(); i++) {
 
 			if (login.equals(listaFuncionario.get(i).getCpf()) && senha.equals(listaFuncionario.get(i).getSenha())) {
-				MenuUsuario menuUsuario = new MenuUsuario(listaConta, listaCliente, 
-						listaFuncionario.get(i).getCpf(), listaFuncionario.get(i).getCARGO());
+				MenuUsuario menuUsuario = new MenuUsuario(listaConta, listaCliente, listaFuncionario,
+                        listaFuncionario.get(i).getCpf(), listaFuncionario.get(i).getCARGO());
 				menuUsuario.menuCliente();
 				System.out.printf("Usuário logado com sucesso!");
 				 executar =1;
@@ -82,7 +74,6 @@ public class Menu {
 			System.out.println("Conta deslogada, volte sempre!");
 		}
 		
-		
 
 //verificar pessoa
 
@@ -90,7 +81,6 @@ public class Menu {
 
 
 	public void listas() {
-		
 
 
         //  ContaCorrente contaCorrente1 = new ContaCorrente("1", 4000.00, "1");
@@ -164,5 +154,6 @@ public class Menu {
         listaFuncionario = (ArrayList<Funcionario>) comprovante.lerObjetos("\\banco_grupo5\\src\\menu\\BDFuncionarios.txt");
         listaCliente = (ArrayList<Cliente>) comprovante.lerObjetos( "\\banco_grupo5\\src\\menu\\BDClientes.txt");
 
-	}
+
+    }
 }

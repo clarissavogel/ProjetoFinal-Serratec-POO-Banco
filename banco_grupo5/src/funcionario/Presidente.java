@@ -10,12 +10,23 @@ public class Presidente extends Diretor {
 		super();
 	}
 
-	public Presidente(String cpf,String nome, String senha) {
-		super(cpf,nome, senha);
-		
+	public Presidente(String cpf, String nome, String senha) {
+		this.setCpf(cpf);
+		this.setNome(nome);
+		this.setSenha(senha);
 	}
 
+	public void relatorioCapitalTotal() {
+	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Presidente [CARGO=" + CARGO + ", getIdAgencia()=" + getIdAgencia() + ", getCpf()=" + getCpf()
+				+ ", getNome()=" + getNome() + "]";
+	}
+
 	@Override
 	public String getCARGO() {
 		return CARGO;

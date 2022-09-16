@@ -36,7 +36,7 @@ public class Comprovante {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        
+
     }
 
 
@@ -70,7 +70,7 @@ public class Comprovante {
             out.println(string);
             out.close();
         }
-        
+
     }
 
 

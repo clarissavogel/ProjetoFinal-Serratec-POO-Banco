@@ -44,7 +44,7 @@ public abstract class Pessoa implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Pessoa [cpf=" + cpf + ", nome=" + nome + ", senha=" + senha + "]";
+		return "\nNome: " + nome + "\tCPF: " + cpf + "\tSenha=" + senha;
 	}
 
 	

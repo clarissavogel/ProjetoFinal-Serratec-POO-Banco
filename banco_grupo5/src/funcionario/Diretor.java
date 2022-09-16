@@ -22,8 +22,7 @@ public class Diretor extends Gerente {
 
 	@Override
 	public String toString() {
-		return "Diretor [CARGO=" + CARGO + ", getIdAgencia()=" + getIdAgencia() + ", getCpf()=" + getCpf()
-				+ ", getNome()=" + getNome() + "]";
+		return "Dados do Diretor: \n\tNome:" + getNome() + "\tCPF: " + getCpf();
 	}
 
 

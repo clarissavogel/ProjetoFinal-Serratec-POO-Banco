@@ -2,7 +2,7 @@ package conta;
 
 public class ContaCorrente extends Conta {
 
-private final String TIPO = "CONTACORRENTE";
+	private final String TIPO = "CONTACORRENTE";
 
 	public ContaCorrente() {
 	}
@@ -18,7 +18,7 @@ private final String TIPO = "CONTACORRENTE";
 		System.out.printf("\nValor únitario da tarifa: R$%.2f", TARIFA);
 		System.out.printf("\nTotal Transferências: R$%.2f", contadorTransferencia * TRANSFERIRTARIFA);
 		System.out.printf("\nValor únitario da tarifa: R$%.2f", TRANSFERIRTARIFA);
-		System.out.printf("\nValor total gasto: R$%.2f",
+		System.out.printf("\nValor total gasto: R$%.2f\n",
 				((contadorSaque * TARIFA) + (contadorDeposito * TARIFA) + (contadorTransferencia * TRANSFERIRTARIFA)));
 
 	}
@@ -27,7 +27,5 @@ private final String TIPO = "CONTACORRENTE";
 	public String getTIPO() {
 		return TIPO;
 	}
-
-	
 
 }

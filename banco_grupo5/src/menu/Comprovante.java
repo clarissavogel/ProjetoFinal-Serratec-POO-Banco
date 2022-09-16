@@ -12,12 +12,27 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Comprovante {
+<<<<<<< Updated upstream
     
     public void escreverObjetos(Object object, String filepath) {
+=======
 
+    public String pathDiretorio;
+    
+
+    public Comprovante() {
+        this.pathDiretorio = System.getProperty("user.dir");
+        System.out.println(this.pathDiretorio);
+    }
+
+>>>>>>> Stashed changes
+
+
+    public void escreverObjetos(Object object, String filepath) {
+        String absolutePath = this.pathDiretorio + filepath;
         try {
  
-            FileOutputStream fileOut = new FileOutputStream(filepath);
+            FileOutputStream fileOut = new FileOutputStream(absolutePath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(object);
             objectOut.close();
@@ -32,10 +47,10 @@ public class Comprovante {
 
 
     public Object lerObjetos(String filepath) {
-
+        String absolutePath = this.pathDiretorio + filepath;
         try {
  
-            FileInputStream fileIn = new FileInputStream(filepath);
+            FileInputStream fileIn = new FileInputStream(absolutePath);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
  
             Object obj = objectIn.readObject();

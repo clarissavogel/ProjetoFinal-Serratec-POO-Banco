@@ -20,11 +20,13 @@ public class Diretor extends Gerente {
 		return CARGO;
 	}
 
-
-
-	public void relatorioInformacoesCliente() {
-
+	@Override
+	public String toString() {
+		return "Diretor [CARGO=" + CARGO + ", getIdAgencia()=" + getIdAgencia() + ", getCpf()=" + getCpf()
+				+ ", getNome()=" + getNome() + "]";
 	}
+
+
 
 	/*
 	 * Relatório com as informações de Nome, CPF e Agência de todos os clientes do

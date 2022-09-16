@@ -27,4 +27,12 @@ public class Gerente extends Funcionario {
 		return CARGO;
 	}
 
+	@Override
+	public String toString() {
+		return "Gerente [idAgencia=" + idAgencia + ", CARGO=" + CARGO + ", getCpf()=" + getCpf() + ", getNome()="
+				+ getNome() + "]";
+	}
+
+	
+	
 }

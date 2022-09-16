@@ -265,11 +265,23 @@ public class MenuUsuario extends Menu {
 				break;
 
 			case 5:
-					ArrayList<Pessoa> listaPessoa = new ArrayList <>();
-					listaPessoa.addAll(listaCliente);
-					listaPessoa.addAll(listaFuncionario);
+				ArrayList<Pessoa> listaPessoa = new ArrayList <>();
+//				for (int i = 0; i < listaCliente.size(); i++) {
+//					listaPessoa.add(listaCliente.get(i));
+//					
+//				}	
+				for (int i = 0; i < listaFuncionario.size(); i++) {
+					System.out.println(listaFuncionario.get(i).getNome());
+					listaPessoa.add(listaFuncionario.get(i));
 					
-				if (listaCliente.size() > 0) {
+				}	
+				
+				for (int i = 0; i < listaPessoa.size(); i++) {
+					System.out.println(listaPessoa.get(i).toString());
+					
+				}	
+				
+				if (listaPessoa.size() > 0) {
 				
 					Collections.sort(listaPessoa, new Comparator<Pessoa>() {
 

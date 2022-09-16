@@ -58,8 +58,8 @@ public class Menu {
 		for (int i = 0; i < listaFuncionario.size(); i++) {
 
 			if (login.equals(listaFuncionario.get(i).getCpf()) && senha.equals(listaFuncionario.get(i).getSenha())) {
-				MenuUsuario menuUsuario = new MenuUsuario(listaConta, listaCliente, 
-						listaFuncionario.get(i).getCpf(), listaFuncionario.get(i).getCARGO());
+				MenuUsuario menuUsuario = new MenuUsuario(listaConta, listaCliente, listaFuncionario,
+                        listaFuncionario.get(i).getCpf(), listaFuncionario.get(i).getCARGO());
 				menuUsuario.menuCliente();
 				System.out.printf("Usuário logado com sucesso!");
 				 executar =1;

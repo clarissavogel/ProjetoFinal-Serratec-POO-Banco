@@ -9,6 +9,7 @@ import cliente.Cliente;
 import conta.Conta;
 import conta.ContaCorrente;
 import conta.ContaPoupanca;
+import funcionario.Funcionario;
 import pessoa.Pessoa;
 
 public class MenuUsuario extends Menu {
@@ -38,26 +39,28 @@ public class MenuUsuario extends Menu {
 
 	}
 
-	public MenuUsuario(ArrayList<Conta> listaConta, ArrayList<Cliente> listaCliente, String cpfUsuario,
-			String cargoUsuario) {
-		super();
-		this.listaConta = listaConta;
-		this.listaCliente = listaCliente;
-		this.cpfUsuario = cpfUsuario;
-		this.cargoUsuario = cargoUsuario;
-		for (int i = 0; i < listaConta.size(); i++) {
-			if (cpfUsuario.equals(listaConta.get(i).getCpfTitular())) {
-				if (listaConta.get(i).getTIPO().equals("CONTACORRENTE")) {
-					contaCorrenteUsuario = (ContaCorrente) listaConta.get(i);
-				} else if (listaConta.get(i).getTIPO().equals("CONTAPOUPANCA")) {
-					contaPoupancaUsuario = (ContaPoupanca) listaConta.get(i);
-				}
+	public MenuUsuario(ArrayList<Conta> listaConta, ArrayList<Cliente> listaCliente, 
+		    ArrayList<Funcionario> listaFuncionario,String cpfUsuario,
+		            String cargoUsuario) {
+		        super();
+		        this.listaConta = listaConta;
+		        this.listaCliente = listaCliente;
+		        this.listaFuncionario = listaFuncionario;
+		        this.cpfUsuario = cpfUsuario;
+		        this.cargoUsuario = cargoUsuario;
+		        for (int i = 0; i < listaConta.size(); i++) {
+		            if (cpfUsuario.equals(listaConta.get(i).getCpfTitular())) {
+		                if (listaConta.get(i).getTIPO().equals("CONTACORRENTE")) {
+		                    contaCorrenteUsuario = (ContaCorrente) listaConta.get(i);
+		                } else if (listaConta.get(i).getTIPO().equals("CONTAPOUPANCA")) {
+		                    contaPoupancaUsuario = (ContaPoupanca) listaConta.get(i);
+		                }
 
-			}
+		            }
 
-		}
+		        }
 
-	}
+		    }
 
 	public void menuCliente() {
 		System.out.println("Bem-vindo a área do Cliente!");

@@ -21,8 +21,11 @@ public class Menu {
 	public ArrayList<Funcionario> listaFuncionario;
 	public ArrayList<Cliente> listaCliente;
 	public ArrayList<Conta> listaConta;
+<<<<<<< Updated upstream
     // public String comprovanteNome;
     public String comprovanteLog;
+=======
+>>>>>>> Stashed changes
    
 
 	public Menu() {
@@ -165,12 +168,21 @@ do{
         //  comprovante.escreverObjetos(listaConta, "\\banco_grupo5\\src\\menu\\BDContas.txt");
         //  comprovante.escreverObjetos(listaFuncionario, "\\banco_grupo5\\src\\menu\\BDFuncionarios.txt");
 		// 	comprovante.escreverObjetos(listaCliente, "\\banco_grupo5\\src\\menu\\BDClientes.txt");
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
         listaConta = (ArrayList<Conta>) comprovante.lerObjetos("\\banco_grupo5\\src\\menu\\BDContas.txt");
         listaFuncionario = (ArrayList<Funcionario>) comprovante.lerObjetos("\\banco_grupo5\\src\\menu\\BDFuncionarios.txt");
         listaCliente = (ArrayList<Cliente>) comprovante.lerObjetos( "\\banco_grupo5\\src\\menu\\BDClientes.txt");
 
+<<<<<<< Updated upstream
+=======
+        listaConta = (ArrayList<Conta>) comprovante.lerObjetos("\\banco_grupo5\\src\\menu\\BDContas.txt");
+        listaFuncionario = (ArrayList<Funcionario>) comprovante.lerObjetos("\\banco_grupo5\\src\\menu\\BDFuncionarios.txt");
+        listaCliente = (ArrayList<Cliente>) comprovante.lerObjetos( "\\banco_grupo5\\src\\menu\\BDClientes.txt");
+>>>>>>> Stashed changes
 
     }
 }

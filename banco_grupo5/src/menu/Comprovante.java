@@ -65,7 +65,7 @@ public class Comprovante {
 
 
     public void printarComprovante(String string, String filepath) throws FileNotFoundException {
-        String absolutePath = this.pathDiretorio + filepath;
+        String absolutePath = this.pathDiretorio + "\\" + filepath + ".txt";
         try (PrintWriter out = new PrintWriter(absolutePath)) {
             out.println(string);
             out.close();

@@ -32,12 +32,12 @@ public abstract class Conta implements Serializable {
 			this.saldo = novoSaldo;
 			this.contadorSaque++;
 			System.out.println("Saque realizado com sucesso!");
-			return "===================="
+			return "\n===================="
 					+ "\nSaque: "
 					+ "\nValor Saque: "+ df.format(valor)
 					+ "\nSaldo Anterior: "+ df.format(this.saldo + valor + TARIFA)
 					+ "\nSaldo Atual: " + df.format(this.saldo)
-					+ "====================";
+					+ "\n====================";
 		} else {
 			System.out.println("Saque rejeitado!\nSaldo insuficiente para saque.");
 			return null;
@@ -52,12 +52,12 @@ public abstract class Conta implements Serializable {
 			this.saldo = this.saldo + deposito - TARIFA;
 			this.contadorDeposito++;
 			System.out.println("Depósito realizado com sucesso!");
-			return "===================="
+			return "\n===================="
 			+ "\nDepósito: "
 			+ "\nValor Depósito: "+df.format(deposito)
 			+ "\nSaldo Anterior: "+ df.format(this.saldo - deposito + TARIFA)
 			+ "\nSaldo Atual: " +df.format(this.saldo)
-			+ "====================";
+			+ "\n====================";
 		} else {
 			System.out.println("Deposito rejeitado!\nValor mínimo nescessário R$ 0,11.");
 			return null;
@@ -72,13 +72,13 @@ public abstract class Conta implements Serializable {
 			destino.saldo = destino.saldo + valor;
 			this.contadorTransferencia++;
 			System.out.println("Transferência realizada com sucesso!");
-			return "===================="
+			return "\n===================="
 			+ "\nTransferência: "
 			+ "\nValor Transferência: "+df.format(valor)
 			+ "\nConta Destino: "+destino.getCpfTitular()
 			+ "\nSaldo Anterior: "+ df.format(this.saldo + valor + TRANSFERIRTARIFA)
 			+ "\nSaldo Atual: " + df.format(this.saldo)
-			+ "====================";
+			+ "\n====================";
 		} else {
 			System.out.println("N�o h� saldo suficiente para transfer�ncia");
 			return null;

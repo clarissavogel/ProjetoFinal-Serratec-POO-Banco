@@ -12,7 +12,7 @@ public class Cliente extends Pessoa implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Dados do Cliente:\n\tNome do Cliente:" + getNome() + "\tCPF: " + getCpf();
+		return "Dados do Cliente:\n\tNome: " + getNome() + "\tCPF: " + getCpf();
 	}
 
 }

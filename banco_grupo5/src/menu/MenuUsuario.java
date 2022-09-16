@@ -1,5 +1,7 @@
 package menu;
 
+import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -21,9 +23,22 @@ public class MenuUsuario extends Menu {
 	public ContaPoupanca contaPoupancaUsuario;
 
 	Scanner in = new Scanner(System.in);
+	public Comprovante comprovante = new Comprovante();
+	public String comprovanteNome;
+	public String comprovanteConteudo = "";
 
-	public MenuUsuario(ArrayList<Conta> listaConta, String cpfUsuario) {
+	public String getComprovanteConteudo() {
+		return comprovanteConteudo;
+	}
+
+	public void setComprovanteConteudo(String comprovanteConteudo) {
+		this.comprovanteConteudo += comprovanteConteudo;
+	}
+
+	public MenuUsuario(String comprovanteNome, ArrayList<Conta> listaConta, String cpfUsuario) {
 		super();
+
+		this.comprovanteNome = comprovanteNome;
 		this.listaConta = listaConta;
 		this.cpfUsuario = cpfUsuario;
 		for (int i = 0; i < listaConta.size(); i++) {
@@ -40,9 +55,10 @@ public class MenuUsuario extends Menu {
 
 	}
 
-	public MenuUsuario(ArrayList<Conta> listaConta, ArrayList<Cliente> listaCliente,
+	public MenuUsuario(String comprovanteNome, ArrayList<Conta> listaConta, ArrayList<Cliente> listaCliente,
 			ArrayList<Funcionario> listaFuncionario, String cpfUsuario, String cargoUsuario) {
 		super();
+		this.comprovanteNome = comprovanteNome;
 		this.listaConta = listaConta;
 		this.listaCliente = listaCliente;
 		this.listaFuncionario = listaFuncionario;
@@ -62,7 +78,7 @@ public class MenuUsuario extends Menu {
 
 	}
 
-	public void menuCliente() {
+	public void menuCliente() throws FileNotFoundException {
 
 		int opcao;
 
@@ -71,26 +87,29 @@ public class MenuUsuario extends Menu {
 			opcao = in.nextInt();
 
 			switch (opcao) {
-			case 1:
+				case 1:
 
-				movimentacoesConta();
-				break;
+					movimentacoesConta();
+					break;
 
-			case 2:
-				if (cargoUsuario.equals("PRESIDENTE")) {
-					relatoriosPresidente();
-				} else if (cargoUsuario.equals("DIRETOR")) {
-					relatoriosDiretor();
-				} else if (cargoUsuario.equals("GERENTE")) {
-					relatoriosGerente();
-				} else {
-					relatoriosCliente();
-				}
+				case 2:
+					if (cargoUsuario.equals("PRESIDENTE")) {
+						relatoriosPresidente();
+					} else if (cargoUsuario.equals("DIRETOR")) {
+						relatoriosDiretor();
+					} else if (cargoUsuario.equals("GERENTE")) {
+						relatoriosGerente();
+					} else {
+						relatoriosCliente();
+					}
 
-				break;
+					break;
 
-			default:
-				break;
+				case 3:
+					comprovante.printarComprovante(getComprovanteConteudo(), comprovanteNome);
+					break;
+				default:
+					break;
 			}
 
 		} while (opcao != 3);
@@ -105,39 +124,42 @@ public class MenuUsuario extends Menu {
 			double valor;
 			switch (opcao) {
 
-			case 1:
-				System.out.println("Informe um valor para o saque:");
-				valor = in.nextDouble();
-				contaCorrenteUsuario.sacar(valor);
-				break;
+				case 1:
+					System.out.println("Informe um valor para o saque:");
+					valor = in.nextDouble();
+					setComprovanteConteudo(contaCorrenteUsuario.sacar(valor));
+					System.out.println(getComprovanteConteudo());
+					break;
 
-			case 2:
-				System.out.println("Informe um valor para o depósito:");
-				valor = in.nextDouble();
-				contaCorrenteUsuario.depositar(valor);
-				break;
+				case 2:
+					System.out.println("Informe um valor para o depósito:");
+					valor = in.nextDouble();
+					setComprovanteConteudo(contaCorrenteUsuario.depositar(valor));
+					System.out.println(getComprovanteConteudo());
+					break;
 
-			case 3:
-				System.out.println("Informe o cpf do titular da conta destino:");
-				String cpfTitular = in.next();
-				Conta destino;
+				case 3:
+					System.out.println("Informe o cpf do titular da conta destino:");
+					String cpfTitular = in.next();
+					Conta destino;
 
-				for (int i = 0; i < listaConta.size(); i++) {
+					for (int i = 0; i < listaConta.size(); i++) {
 
-					if (cpfTitular.equals(listaConta.get(i).getCpfTitular())
-							&& listaConta.get(i).getTIPO().equals("CONTACORRENTE")) {
+						if (cpfTitular.equals(listaConta.get(i).getCpfTitular())
+								&& listaConta.get(i).getTIPO().equals("CONTACORRENTE")) {
 
-						destino = listaConta.get(i);
+							destino = listaConta.get(i);
 
-						System.out.println("Informe o valor da transferencia:");
-						valor = in.nextDouble();
+							System.out.println("Informe o valor da transferencia:");
+							valor = in.nextDouble();
 
-						contaCorrenteUsuario.transferir(destino, valor);
-						break;
+							setComprovanteConteudo(contaCorrenteUsuario.transferir(destino, valor));
+							System.out.println(getComprovanteConteudo());
+							break;
+						}
 					}
-				}
-			default:
-				break;
+				default:
+					break;
 			}
 
 		} while (opcao != 4);
@@ -152,22 +174,22 @@ public class MenuUsuario extends Menu {
 			opcao = in.nextInt();
 
 			switch (opcao) {
-			case 1:
+				case 1:
 
-				System.out.printf("Seu saldo atual é de: R$%.2f", contaCorrenteUsuario.getSaldo());
-				break;
+					System.out.printf("Seu saldo atual é de: R$%.2f", contaCorrenteUsuario.getSaldo());
+					break;
 
-			case 2:
+				case 2:
 
-				contaCorrenteUsuario.relatorioTributacao();
-				break;
+					contaCorrenteUsuario.relatorioTributacao();
+					break;
 
-			case 3:
-				poupancaEntrada();
-				break;
+				case 3:
+					poupancaEntrada();
+					break;
 
-			default:
-				break;
+				default:
+					break;
 			}
 
 		} while (opcao != 4);
@@ -183,26 +205,26 @@ public class MenuUsuario extends Menu {
 			opcao = in.nextInt();
 
 			switch (opcao) {
-			case 1:
+				case 1:
 
-				System.out.printf("Seu saldo atual é de: R$%.2f", contaCorrenteUsuario.getSaldo());
-				break;
+					System.out.printf("Seu saldo atual é de: R$%.2f", contaCorrenteUsuario.getSaldo());
+					break;
 
-			case 2:
+				case 2:
 
-				contaCorrenteUsuario.relatorioTributacao();
-				break;
+					contaCorrenteUsuario.relatorioTributacao();
+					break;
 
-			case 3:
-				poupancaEntrada();
-				break;
+				case 3:
+					poupancaEntrada();
+					break;
 
-			case 4:
-				relatorioNumContas();
-				break;
+				case 4:
+					relatorioNumContas();
+					break;
 
-			default:
-				break;
+				default:
+					break;
 			}
 
 		} while (opcao != 5);
@@ -219,35 +241,35 @@ public class MenuUsuario extends Menu {
 			opcao = in.nextInt();
 
 			switch (opcao) {
-			case 1:
-				System.out.printf("Seu saldo atual é de: R$%.2f", contaCorrenteUsuario.getSaldo());
-				break;
+				case 1:
+					System.out.printf("Seu saldo atual é de: R$%.2f", contaCorrenteUsuario.getSaldo());
+					break;
 
-			case 2:
-				contaCorrenteUsuario.relatorioTributacao();
-				break;
+				case 2:
+					contaCorrenteUsuario.relatorioTributacao();
+					break;
 
-			case 3:
-				poupancaEntrada();
-				break;
+				case 3:
+					poupancaEntrada();
+					break;
 
-			case 4:
-				relatorioNumContas();
-				break;
+				case 4:
+					relatorioNumContas();
+					break;
 
-			case 5:
-				relatorioInfoClientes();
-				break;
+				case 5:
+					relatorioInfoClientes();
+					break;
 
-			default:
-				break;
+				default:
+					break;
 			}
 
 		} while (opcao != 6);
 
 	}
 
-	public void relatoriosPresidente() {
+	public void relatoriosPresidente() throws FileNotFoundException {
 
 		int opcao;
 		do {
@@ -257,47 +279,54 @@ public class MenuUsuario extends Menu {
 			opcao = in.nextInt();
 
 			switch (opcao) {
-			case 1:
-				System.out.printf("Seu saldo atual é de: R$%.2f", contaCorrenteUsuario.getSaldo());
-				break;
+				case 1:
+				DecimalFormat df = new DecimalFormat();
+				df.setMaximumFractionDigits(2);
+					System.out.println("Seu saldo atual é de: R$" + df.format(contaCorrenteUsuario.getSaldo()));
+					comprovante.printarComprovante("Seu saldo atual é de: R$" + df.format(contaCorrenteUsuario.getSaldo()), comprovanteNome+"RelatorioSaldo");
+					break;
 
-			case 2:
-				contaCorrenteUsuario.relatorioTributacao();
-				break;
+				case 2:
+					comprovante.printarComprovante(contaCorrenteUsuario.relatorioTributacao(), comprovanteNome+"RelatorioTributacao");
+					
+					break;
 
-			case 3:
-				poupancaEntrada();
-				break;
+				case 3:
+				comprovante.printarComprovante(poupancaEntrada(), comprovanteNome+"RelatorioPoupanca");
+					break;
 
-			case 4:
-				relatorioNumContas();
-				break;
+				case 4:
+					comprovante.printarComprovante(relatorioNumContas(), comprovanteNome + "RelatorioNumContas");
+					break;
 
-			case 5:
-				relatorioInfoClientes();
-				break;
+				case 5:
+					comprovante.printarComprovante(relatorioInfoClientes(), comprovanteNome + "RelatorioInfoClientes");
+					break;
 
-			case 6:
-				relatorioCapitalTotal();
-				break;
+				case 6:
+					comprovante.printarComprovante(relatorioCapitalTotal(), comprovanteNome + "RelatorioCapital");
+					break;
 
-			default:
-				break;
+				default:
+					break;
 			}
 
 		} while (opcao != 7);
 
 	}
 
-	public void poupancaEntrada() {
+	public String poupancaEntrada() {
+		String retorno= "===================";
 		System.out.println("Digite o valor para a simulação de rendimento da poupança");
 		double valor = in.nextDouble();
 		System.out.println("Digite a data final para a simulação no formato dd/MM/yyyy");
 		String dataPlanejada = in.next();
-		contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
+		retorno += contaPoupancaUsuario.relatorioRendimento(valor, dataPlanejada);
+		return retorno
+		+"\n====================";
 	}
 
-	public void relatorioNumContas() {
+	public String relatorioNumContas() {
 		int contadorContasAgencia = 0;
 		String numeroAgencia = null;
 		Gerente gerente;
@@ -325,11 +354,16 @@ public class MenuUsuario extends Menu {
 
 		}
 		System.out.println("A quantidade de contas nessa agência é de: " + contadorContasAgencia);
+		return "====================\n"
+				+ "Existem " + contadorContasAgencia + " contas na Agencia " + numeroAgencia
+				+ "\n===================";
 
 	}
 
-	public void relatorioInfoClientes() {
+	public String relatorioInfoClientes() {
 		ArrayList<Pessoa> listaPessoa = new ArrayList<>();
+		String retorno = "====================\n";
+
 		for (int i = 0; i < listaCliente.size(); i++) {
 			listaPessoa.add(listaCliente.get(i));
 
@@ -353,21 +387,33 @@ public class MenuUsuario extends Menu {
 
 		for (int i = 0; i < listaPessoa.size(); i++) {
 			System.out.println(listaPessoa.get(i).toString());
+			retorno += listaPessoa.get(i).toString();
+
 			for (int j = 0; j < listaConta.size(); j++) {
 				if (listaPessoa.get(i).getCpf().equals(listaConta.get(j).getCpfTitular())
 						&& listaConta.get(j).getTIPO().equals("CONTACORRENTE")) {
 					System.out.println("\tAgência Conta: " + listaConta.get(j).getIdAgencia() + "\n");
+					retorno += "\n\tAgência Conta: " + listaConta.get(j).getIdAgencia() + "\n\n";
+
 				}
 			}
+			retorno += "====================\n";
 		}
+		return retorno;
 	}
 
-	public void relatorioCapitalTotal() {
+	public String relatorioCapitalTotal() {
 		double total = 0;
+		DecimalFormat df = new DecimalFormat();
+		df.setMaximumFractionDigits(2);
 		for (int i = 0; i < listaConta.size(); i++) {
 			total += listaConta.get(i).getSaldo();
 		}
 		System.out.printf("Valor total do capital armazenado no banco: R$ %.2f\n", total);
+		return "==================="
+				+ "Relatório de Capital do Banco\n"
+				+ "Valor total do capital armazenado no banco: R$" + df.format(total)
+				+ "===================";
 	}
 
 }

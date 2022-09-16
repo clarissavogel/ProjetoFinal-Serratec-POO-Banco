@@ -18,7 +18,7 @@ public class ContaPoupanca extends Conta {
 
 	}
 
-	public void relatorioRendimento(double valor, String dataPlanejada) {
+	public String relatorioRendimento(double valor, String dataPlanejada) {
 
 		LocalDate hoje = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -29,7 +29,7 @@ public class ContaPoupanca extends Conta {
 		df.setMaximumFractionDigits(2);
 		double valor1 = valor + (valor * (dias * (PORCENTAGEMRENDIMENTO / 100)));
 		System.out.println("Valor final será de: R$" + df.format(valor1));
-
+		return "\nValor final será de: R$" + df.format(valor1) + " em" + dataFinal.format(formatter) + "\n";
 	}
 
 	@Override

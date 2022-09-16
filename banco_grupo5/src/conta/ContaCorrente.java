@@ -1,5 +1,7 @@
 package conta;
 
+import java.text.DecimalFormat;
+
 public class ContaCorrente extends Conta {
 
 	private final String TIPO = "CONTACORRENTE";
@@ -11,15 +13,22 @@ public class ContaCorrente extends Conta {
 		super(cpfTitular, saldo, idAgencia);
 	}
 
-	public void relatorioTributacao() {
-		System.out.printf("\nTributação:\nTotal Saques: R$%.2f", contadorSaque * TARIFA);
-		System.out.printf("\nValor únitario da tarifa: R$%.2f", TARIFA);
-		System.out.printf("\nTotal Depósitos: R$%.2f", contadorDeposito * TARIFA);
-		System.out.printf("\nValor únitario da tarifa: R$%.2f", TARIFA);
-		System.out.printf("\nTotal Transferências: R$%.2f", contadorTransferencia * TRANSFERIRTARIFA);
-		System.out.printf("\nValor únitario da tarifa: R$%.2f", TRANSFERIRTARIFA);
-		System.out.printf("\nValor total gasto: R$%.2f\n",
-				((contadorSaque * TARIFA) + (contadorDeposito * TARIFA) + (contadorTransferencia * TRANSFERIRTARIFA)));
+	public String relatorioTributacao() {
+		
+		DecimalFormat df = new DecimalFormat("##0.00");
+		String retorno = "====================\n"
+		+"\nTributação:\nTotal Saques: R$"+ df.format(contadorSaque * TARIFA)
+		+"\nValor únitario da tarifa: R$"+ df.format(TARIFA)
+		+"\nTotal Depósitos: R$"+ df.format(contadorDeposito * TARIFA)
+		+"\nValor únitario da tarifa: R$"+ df.format(TARIFA)
+		+"\nTotal Transferências: R$"+ df.format(contadorTransferencia * TRANSFERIRTARIFA)
+		+"\nValor únitario da tarifa: R$"+ df.format(TRANSFERIRTARIFA)
+		+"\nValor total gasto: R$"
+		+df.format((contadorSaque * TARIFA) + (contadorDeposito * TARIFA) + (contadorTransferencia * TRANSFERIRTARIFA))
+		+"\n====================";
+		System.out.println(retorno);
+
+		return retorno;
 
 	}
 

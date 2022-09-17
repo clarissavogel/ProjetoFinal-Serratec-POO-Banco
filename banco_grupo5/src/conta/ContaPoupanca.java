@@ -25,8 +25,7 @@ public class ContaPoupanca extends Conta {
 		LocalDate dataFinal = LocalDate.parse(dataPlanejada, formatter);
 		int dias = (int) ChronoUnit.DAYS.between(hoje, dataFinal);
 
-		DecimalFormat df = new DecimalFormat();
-		df.setMaximumFractionDigits(2);
+		DecimalFormat df = new DecimalFormat("##0.00");
 		double valor1 = valor + (valor * (dias * (PORCENTAGEMRENDIMENTO / 100)));
 		System.out.println("Valor final será de: R$" + df.format(valor1));
 		return "\nValor final será de: R$" + df.format(valor1) + " em" + dataFinal.format(formatter) + "\n";

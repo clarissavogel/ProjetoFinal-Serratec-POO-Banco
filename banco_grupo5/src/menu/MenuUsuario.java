@@ -165,7 +165,7 @@ public class MenuUsuario extends Menu {
 		} while (opcao != 4);
 	}
 
-	public void relatoriosCliente() {
+	public void relatoriosCliente() throws FileNotFoundException {
 
 		int opcao;
 		do {
@@ -174,19 +174,20 @@ public class MenuUsuario extends Menu {
 			opcao = in.nextInt();
 
 			switch (opcao) {
-				case 1:
+			case 1:
+				DecimalFormat df = new DecimalFormat("##0.00");
+				System.out.println("Seu saldo atual é de: R$" + df.format(contaCorrenteUsuario.getSaldo()));
+				comprovante.printarComprovante("Seu saldo atual é de: R$" + df.format(contaCorrenteUsuario.getSaldo()), comprovanteNome+"RelatorioSaldo");
+				break;
 
-					System.out.printf("Seu saldo atual é de: R$%.2f", contaCorrenteUsuario.getSaldo());
-					break;
+			case 2:
+				comprovante.printarComprovante(contaCorrenteUsuario.relatorioTributacao(), comprovanteNome+"RelatorioTributacao");
+				
+				break;
 
-				case 2:
-
-					contaCorrenteUsuario.relatorioTributacao();
-					break;
-
-				case 3:
-					poupancaEntrada();
-					break;
+			case 3:
+				comprovante.printarComprovante(poupancaEntrada(), comprovanteNome+"RelatorioPoupanca");
+				break;
 
 				default:
 					break;
@@ -196,7 +197,7 @@ public class MenuUsuario extends Menu {
 
 	}
 
-	public void relatoriosGerente() {
+	public void relatoriosGerente() throws FileNotFoundException {
 
 		int opcao;
 		do {
@@ -205,23 +206,24 @@ public class MenuUsuario extends Menu {
 			opcao = in.nextInt();
 
 			switch (opcao) {
-				case 1:
+			case 1:
+				DecimalFormat df = new DecimalFormat("##0.00");
+				System.out.println("Seu saldo atual é de: R$" + df.format(contaCorrenteUsuario.getSaldo()));
+				comprovante.printarComprovante("Seu saldo atual é de: R$" + df.format(contaCorrenteUsuario.getSaldo()), comprovanteNome+"RelatorioSaldo");
+				break;
 
-					System.out.printf("Seu saldo atual é de: R$%.2f", contaCorrenteUsuario.getSaldo());
-					break;
+			case 2:
+				comprovante.printarComprovante(contaCorrenteUsuario.relatorioTributacao(), comprovanteNome+"RelatorioTributacao");
+				
+				break;
 
-				case 2:
+			case 3:
+				comprovante.printarComprovante(poupancaEntrada(), comprovanteNome+"RelatorioPoupanca");
+				break;
 
-					contaCorrenteUsuario.relatorioTributacao();
-					break;
-
-				case 3:
-					poupancaEntrada();
-					break;
-
-				case 4:
-					relatorioNumContas();
-					break;
+			case 4:
+				comprovante.printarComprovante(relatorioNumContas(), comprovanteNome + "RelatorioNumContas");
+				break;
 
 				default:
 					break;
@@ -231,7 +233,7 @@ public class MenuUsuario extends Menu {
 
 	}
 
-	public void relatoriosDiretor() {
+	public void relatoriosDiretor() throws FileNotFoundException {
 
 		int opcao;
 		do {
@@ -241,25 +243,28 @@ public class MenuUsuario extends Menu {
 			opcao = in.nextInt();
 
 			switch (opcao) {
-				case 1:
-					System.out.printf("Seu saldo atual é de: R$%.2f", contaCorrenteUsuario.getSaldo());
-					break;
+			case 1:
+				DecimalFormat df = new DecimalFormat("##0.00");
+				System.out.println("Seu saldo atual é de: R$" + df.format(contaCorrenteUsuario.getSaldo()));
+				comprovante.printarComprovante("Seu saldo atual é de: R$" + df.format(contaCorrenteUsuario.getSaldo()), comprovanteNome+"RelatorioSaldo");
+				break;
 
-				case 2:
-					contaCorrenteUsuario.relatorioTributacao();
-					break;
+			case 2:
+				comprovante.printarComprovante(contaCorrenteUsuario.relatorioTributacao(), comprovanteNome+"RelatorioTributacao");
+				
+				break;
 
-				case 3:
-					poupancaEntrada();
-					break;
+			case 3:
+				comprovante.printarComprovante(poupancaEntrada(), comprovanteNome+"RelatorioPoupanca");
+				break;
 
-				case 4:
-					relatorioNumContas();
-					break;
+			case 4:
+				comprovante.printarComprovante(relatorioNumContas(), comprovanteNome + "RelatorioNumContas");
+				break;
 
-				case 5:
-					relatorioInfoClientes();
-					break;
+			case 5:
+				comprovante.printarComprovante(relatorioInfoClientes(), comprovanteNome + "RelatorioInfoClientes");
+				break;
 
 				default:
 					break;
@@ -280,8 +285,7 @@ public class MenuUsuario extends Menu {
 
 			switch (opcao) {
 				case 1:
-				DecimalFormat df = new DecimalFormat();
-				df.setMaximumFractionDigits(2);
+					DecimalFormat df = new DecimalFormat("##0.00");
 					System.out.println("Seu saldo atual é de: R$" + df.format(contaCorrenteUsuario.getSaldo()));
 					comprovante.printarComprovante("Seu saldo atual é de: R$" + df.format(contaCorrenteUsuario.getSaldo()), comprovanteNome+"RelatorioSaldo");
 					break;
@@ -292,7 +296,7 @@ public class MenuUsuario extends Menu {
 					break;
 
 				case 3:
-				comprovante.printarComprovante(poupancaEntrada(), comprovanteNome+"RelatorioPoupanca");
+					comprovante.printarComprovante(poupancaEntrada(), comprovanteNome+"RelatorioPoupanca");
 					break;
 
 				case 4:
@@ -369,7 +373,6 @@ public class MenuUsuario extends Menu {
 
 		}
 		for (int i = 0; i < listaFuncionario.size(); i++) {
-			// System.out.println(listaFuncionario.get(i).getNome());
 			listaPessoa.add(listaFuncionario.get(i));
 
 		}
@@ -404,16 +407,15 @@ public class MenuUsuario extends Menu {
 
 	public String relatorioCapitalTotal() {
 		double total = 0;
-		DecimalFormat df = new DecimalFormat();
-		df.setMaximumFractionDigits(2);
+		DecimalFormat df = new DecimalFormat("##0.00");
 		for (int i = 0; i < listaConta.size(); i++) {
 			total += listaConta.get(i).getSaldo();
 		}
 		System.out.printf("Valor total do capital armazenado no banco: R$ %.2f\n", total);
-		return "==================="
+		return "===================\n"
 				+ "Relatório de Capital do Banco\n"
 				+ "Valor total do capital armazenado no banco: R$" + df.format(total)
-				+ "===================";
+				+ "\n===================";
 	}
 
 }

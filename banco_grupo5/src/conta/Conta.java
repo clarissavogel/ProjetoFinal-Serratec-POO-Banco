@@ -25,8 +25,7 @@ public abstract class Conta implements Serializable {
 	}
 
 	public String sacar(double valor) {
-		DecimalFormat df = new DecimalFormat();
-		df.setMaximumFractionDigits(2);
+		DecimalFormat df = new DecimalFormat("##0.00");
 		if (this.saldo > valor + TARIFA) {
 			double novoSaldo = this.saldo - valor - TARIFA;
 			this.saldo = novoSaldo;
@@ -44,10 +43,9 @@ public abstract class Conta implements Serializable {
 		}
 	}
 
-	// criar erro proposital.
+	
 	public String depositar(double deposito) {
-		DecimalFormat df = new DecimalFormat();
-		df.setMaximumFractionDigits(2);
+		DecimalFormat df = new DecimalFormat("##0.00");
 		if (deposito > TARIFA) {
 			this.saldo = this.saldo + deposito - TARIFA;
 			this.contadorDeposito++;
@@ -65,8 +63,7 @@ public abstract class Conta implements Serializable {
 	}
 
 	public String transferir(Conta destino, double valor) {
-		DecimalFormat df = new DecimalFormat();
-		df.setMaximumFractionDigits(2);
+		DecimalFormat df = new DecimalFormat("##0.00");
 		if (this.saldo >= valor + TRANSFERIRTARIFA) {
 			this.saldo = this.saldo - valor - TRANSFERIRTARIFA;
 			destino.saldo = destino.saldo + valor;

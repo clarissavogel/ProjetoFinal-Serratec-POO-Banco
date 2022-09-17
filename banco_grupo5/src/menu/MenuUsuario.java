@@ -34,7 +34,7 @@ public class MenuUsuario extends Menu {
 	public void setComprovanteConteudo(String comprovanteConteudo) {
 		this.comprovanteConteudo += comprovanteConteudo;
 	}
-
+	//CLIENTE: Recebe o nome do arquivo da sessão e os dados nescessarios para a execução dos relatorios e operações 
 	public MenuUsuario(String comprovanteNome, ArrayList<Conta> listaConta, String cpfUsuario) {
 		super();
 
@@ -54,7 +54,7 @@ public class MenuUsuario extends Menu {
 		}
 
 	}
-
+	//FUNCIONARIO: Recebe o nome do arquivo da sessão e os dados nescessarios para a execução dos relatorios e operações 
 	public MenuUsuario(String comprovanteNome, ArrayList<Conta> listaConta, ArrayList<Cliente> listaCliente,
 			ArrayList<Funcionario> listaFuncionario, String cpfUsuario, String cargoUsuario) {
 		super();
@@ -77,7 +77,7 @@ public class MenuUsuario extends Menu {
 		}
 
 	}
-
+	//Menu dos respectivos usuarios
 	public void menuCliente() throws FileNotFoundException {
 
 		int opcao;
@@ -318,7 +318,7 @@ public class MenuUsuario extends Menu {
 		} while (opcao != 7);
 
 	}
-
+	//Métodos executados ao decorrer do menu
 	public String poupancaEntrada() {
 		String retorno= "===================";
 		System.out.println("Digite o valor para a simulação de rendimento da poupança");

@@ -53,7 +53,7 @@ do{
 		System.out.println("Senha: ");
 		String senha = in.next();
 		
-		
+		//Esquema de verificação do login do usuario
 		for (int i = 0; i < listaCliente.size(); i++) {
 
 			if (login.equals(listaCliente.get(i).getCpf()) && senha.equals(listaCliente.get(i).getSenha())) {
@@ -162,15 +162,12 @@ do{
 //         listaCliente.add(cliente2);
 //         listaCliente.add(cliente3);
 			Comprovante comprovante = new Comprovante();
-//
+
 //         comprovante.escreverObjetos(listaConta, "\\BDContas.txt");
 //         comprovante.escreverObjetos(listaFuncionario, "\\BDFuncionarios.txt");
 //		 comprovante.escreverObjetos(listaCliente, "\\BDClientes.txt");
 
-//        listaConta = (ArrayList<Conta>) comprovante.lerObjetos("\\src\\menu\\BDContas.txt");
-//        listaFuncionario = (ArrayList<Funcionario>) comprovante.lerObjetos("\\src\\menu\\BDFuncionarios.txt");
-//        listaCliente = (ArrayList<Cliente>) comprovante.lerObjetos("\\src\\menu\\BDClientes.txt");
-
+		//Alimenta as listas durante a execução do programa com arquivos .txt 
         listaConta = (ArrayList<Conta>) comprovante.lerObjetos("\\BDContas.txt");
         listaFuncionario = (ArrayList<Funcionario>) comprovante.lerObjetos("\\BDFuncionarios.txt");
         listaCliente = (ArrayList<Cliente>) comprovante.lerObjetos("\\BDClientes.txt");

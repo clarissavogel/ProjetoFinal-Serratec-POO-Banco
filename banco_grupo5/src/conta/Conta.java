@@ -23,7 +23,7 @@ public abstract class Conta implements Serializable {
 		this.saldo = saldo;
 		this.idAgencia = idAgencia;
 	}
-
+	//Metódo Sacar do banco.
 	public String sacar(double valor) {
 		DecimalFormat df = new DecimalFormat("##0.00");
 		if (this.saldo > valor + TARIFA) {
@@ -43,7 +43,7 @@ public abstract class Conta implements Serializable {
 		}
 	}
 
-	
+	//Método despositar do banco
 	public String depositar(double deposito) {
 		DecimalFormat df = new DecimalFormat("##0.00");
 		if (deposito > TARIFA) {
@@ -61,7 +61,7 @@ public abstract class Conta implements Serializable {
 			return null;
 		}
 	}
-
+	//Método Transferir do banco.
 	public String transferir(Conta destino, double valor) {
 		DecimalFormat df = new DecimalFormat("##0.00");
 		if (this.saldo >= valor + TRANSFERIRTARIFA) {

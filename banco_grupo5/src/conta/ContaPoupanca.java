@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
 
 public class ContaPoupanca extends Conta {
 	private final String TIPO = "CONTAPOUPANCA";
-	private final double PORCENTAGEMRENDIMENTO = 0.0165;
+	private final double PORCENTAGEMRENDIMENTO = 0.0165;//Porcentagem de rendimento diaria 
 
 	public ContaPoupanca() {
 
@@ -17,13 +17,14 @@ public class ContaPoupanca extends Conta {
 		super(cpfTitular, saldo, idAgencia);
 
 	}
-
-	public String relatorioRendimento(double valor, String dataPlanejada) {
+	//Relatório de rendimento da conta poupança aonde o usuario entrará com o valor desejado e a data desejada, para o calculo
+	//baseado em 6% anual
+	public String relatorioRendimento(double valor, String dataPlanejada) {//data e valor planejado pelo usuario
 
 		LocalDate hoje = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate dataFinal = LocalDate.parse(dataPlanejada, formatter);
-		int dias = (int) ChronoUnit.DAYS.between(hoje, dataFinal);
+		int dias = (int) ChronoUnit.DAYS.between(hoje, dataFinal);//conversão para o calculo da data em dias
 
 		DecimalFormat df = new DecimalFormat("##0.00");
 		double valor1 = valor + (valor * (dias * (PORCENTAGEMRENDIMENTO / 100)));

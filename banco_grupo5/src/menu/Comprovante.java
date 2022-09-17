@@ -12,17 +12,17 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Comprovante {
-
+	
     public String pathDiretorio;
     
-
+    //Construtor com finalidade de puxar o path absoluto da raiz do programa
     public Comprovante() {
         this.pathDiretorio = System.getProperty("user.dir");
         System.out.println(this.pathDiretorio);
     }
 
 
-
+    //Escreve qualquer objeto Serializable no caminho designado
     public void escreverObjetos(Object object, String filepath) {
         String absolutePath = this.pathDiretorio + filepath;
         try {
@@ -40,7 +40,7 @@ public class Comprovante {
     }
 
 
-
+    //Lê qualquer objeto Serializable no caminho designado
     public Object lerObjetos(String filepath) {
         String absolutePath = this.pathDiretorio + filepath;
         try {
@@ -63,7 +63,7 @@ public class Comprovante {
     }
 
 
-
+    //Escreve qualquer String no caminho designado
     public void printarComprovante(String string, String filepath) throws FileNotFoundException {
         String absolutePath = this.pathDiretorio + "\\" + filepath + ".txt";
         try (PrintWriter out = new PrintWriter(absolutePath)) {
